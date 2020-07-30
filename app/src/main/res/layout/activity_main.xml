@@ -3,7 +3,6 @@
     android:id="@+id/login_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,6 +18,7 @@
             android:id="@+id/username_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/input_username"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
+            android:hint="@string/input_password"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -49,8 +50,29 @@
             android:id="@+id/login_button"
             android:layout_below="@id/password_parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/login"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/google_login"
+            android:layout_below="@id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/google_login"
+            android:textColor="@color/whiteColor"
+            android:backgroundTint="@color/googleColor"/>
 
     </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_alignParentBottom="true"
+        android:text="@string/register"/>
 
 </RelativeLayout>

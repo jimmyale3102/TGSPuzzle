@@ -3,4 +3,22 @@
 
     <!-- Login -->
 
+    <string name="input_username">Usuario</string>
+    <string name="input_password">Contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="google_login">Iniciar con google</string>
+
+    <!-- Login Messages -->
+    <string name="user_register_successful">Usuario creado</string>
+    <string name="complete_information_message">Por favor complete la información</string>
+    <string name="invalid_account">La cuenta no existe</string>
+    <string name="empty_username">Digite el usuario</string>
+    <string name="empty_password">Digite la contraseña</string>
+    <string name="invalid_password">La contraseña debe tener al menos 6 caracteres alfanuméricos</string>
+    <string name="authentication_failed">Fallo de autenticación</string>
+    <string name="account_exists_message">La cuenta ya existe</string>
+    <string name="invalid_or_null_password">Contraseña inválida</string>
+    <string name="invalid_user">El usuario no exite</string>
+
 </resources>

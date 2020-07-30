@@ -12,11 +12,14 @@
         <item name="colorSecondary">@color/secondaryColor</item>
         <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
+
+        <item name="materialButtonStyle">@style/Widget.MyApp.MyButton</item>
     </style>
 
     <style name="Widget.MyApp.MyButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">?colorPrimary</item>
         <item name="android:textColor">?colorOnPrimary</item>
+        <item name="cornerRadius">50dp</item>
     </style>
 
     <style name="Widget.MyApp.MyButton.Accent" parent="Widget.MyApp.MyButton">
