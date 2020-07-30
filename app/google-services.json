@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "695794020011",
+    "firebase_url": "https://tgspuzzle.firebaseio.com",
+    "project_id": "tgspuzzle",
+    "storage_bucket": "tgspuzzle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695794020011:android:6ccd84d73a110c3e07d1ee",
+        "android_client_info": {
+          "package_name": "com.android.uptc.tgspuzzleproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695794020011-6cvgdd6sp7unpahltp7de5eq9l7a9kqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.uptc.tgspuzzleproject",
+            "certificate_hash": "1fe42722b5b7e85e949f731667a7085338f44580"
+          }
+        },
+        {
+          "client_id": "695794020011-uhuupb0641mll0tmhkr9hjfnspmn1tp9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD79j_SbWd5d2UX4YUDe5UDZzzhurCBG4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695794020011-uhuupb0641mll0tmhkr9hjfnspmn1tp9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
