@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:id="@+id/login_layout"
+    android:id="@+id/register_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -65,26 +65,34 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_button"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/reply_password_parent"
             android:layout_below="@id/password_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login"/>
+            android:layout_marginTop="@dimen/margin_small"
+            android:hint="@string/input_reply_password"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/reply_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/google_login"
-            android:layout_below="@id/login_button"
+            android:id="@+id/register_button"
+            android:layout_below="@id/reply_password_parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/google_login"
-            android:textColor="@color/whiteColor"
-            android:backgroundTint="@color/googleColor"/>
+            android:text="@string/register"/>
 
     </RelativeLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/register_button"
+        android:id="@+id/login_button"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,6 +100,6 @@
         android:layout_marginEnd="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_medium"
         android:layout_alignParentBottom="true"
-        android:text="@string/register"/>
+        android:text="@string/login"/>
 
 </RelativeLayout>
