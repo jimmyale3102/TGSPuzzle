@@ -2,9 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/crossword_score_item"/>
+        android:id="@+id/crossword_score_item"
+        android:title="@string/crossword_score_item"/>
     <item
-        android:id="@+id/search_word_item"/>
+        android:id="@+id/search_word_item"
+        android:title="@string/search_word_score_item"/>
+
+    <group>
+
+        <item
+            android:id="@+id/about_item"
+            android:title="@string/about_item"/>
+
+    </group>
 
 
 </menu>

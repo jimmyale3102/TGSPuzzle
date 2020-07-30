@@ -33,5 +33,6 @@
     <!-- Home menu -->
     <string name="crossword_score_item">Puntajes de crucigrama</string>
     <string name="search_word_score_item">Puntajes de sopa de letras</string>
+    <string name="about_item">Acecrca de</string>
 
 </resources>
