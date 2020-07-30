@@ -4,9 +4,6 @@ import android.view.View
 import androidx.annotation.StringRes
 import com.google.android.material.snackbar.Snackbar
 
-class Context {
-
-    fun View.snack(@StringRes message: Int, duration: Int = Snackbar.LENGTH_LONG) {
-        Snackbar.make(this, message, duration).show()
-    }
+fun View.snack(@StringRes message: Int, duration: Int = Snackbar.LENGTH_LONG) {
+    Snackbar.make(this, message, duration).show()
 }

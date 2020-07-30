@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.android.uptc.tgspuzzleproject.R
+import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -39,11 +40,11 @@ class Login : AppCompatActivity() {
                     signIn()
                 } else {
                     // If sign in fails, display a message to the user.
-                    /*when(task.exception) {
+                    when(task.exception) {
                         is FirebaseAuthUserCollisionException ->
-                            //toast(R.string.account_exists_message)
-                        else -> {} //main_layout.snackbar(R.string.authentication_failed)
-                    }*/
+                            login_layout.snack(R.string.account_exists_message)
+                        else -> login_layout.snack(R.string.authentication_failed)
+                    }
                 }
             }
     }
@@ -54,13 +55,13 @@ class Login : AppCompatActivity() {
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            /*try {
+            try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
-            }*/
+            }
         }
     }
 
