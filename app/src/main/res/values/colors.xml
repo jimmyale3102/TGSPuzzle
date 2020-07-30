@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!-- App colors -->
+    <color name="primaryColor">#dbac00</color>
+    <color name="primaryLightColor">#ffdd49</color>
+    <color name="primaryDarkColor">#a57d00</color>
+    <color name="secondaryColor">@color/blackColor</color>
+    <color name="secondaryLightColor">#2c2c2c</color>
+    <color name="secondaryDarkColor">@color/blackColor</color>
+
+    <color name="primaryTextColor">@color/blackColor</color>
+    <color name="secondaryTextColor">@color/whiteColor</color>
+    <!-- Base colors -->
+    <color name="blackColor">#000</color>
+    <color name="whiteColor">#fff</color>
 </resources>
