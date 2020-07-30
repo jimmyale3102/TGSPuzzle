@@ -31,30 +31,34 @@ class RegisterActivity : AppCompatActivity() {
     private fun initComponents() {
         register_button.setOnClickListener {
             if (username.text.toString().isNotEmpty()
-                || password.text.toString().isNotEmpty()
-                || reply_password.text.toString().isNotEmpty()
+                && password.text.toString().isNotEmpty()
+                && reply_password.text.toString().isNotEmpty()
             ) {
-                auth.createUserWithEmailAndPassword(
-                    username.text.toString(),
-                    password.text.toString()
-                )
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            register_layout.snack(R.string.user_register_successful)
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            when(task.exception) {
-                                is FirebaseAuthWeakPasswordException -> {
-                                    register_layout.snack(R.string.invalid_password)
+                if(password.text.toString() == reply_password.text.toString()) {
+                    auth.createUserWithEmailAndPassword(
+                        username.text.toString(),
+                        password.text.toString()
+                    )
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                register_layout.snack(R.string.user_register_successful)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                when(task.exception) {
+                                    is FirebaseAuthWeakPasswordException -> {
+                                        register_layout.snack(R.string.invalid_password)
+                                    }
+                                    is FirebaseAuthUserCollisionException -> {
+                                        register_layout.snack(R.string.account_exists_message)
+                                    }
+                                    else -> register_layout.snack(R.string.authentication_failed)
                                 }
-                                is FirebaseAuthUserCollisionException -> {
-                                    register_layout.snack(R.string.account_exists_message)
-                                }
-                                else -> register_layout.snack(R.string.authentication_failed)
                             }
                         }
-                    }
+                } else {
+                    register_layout.snack(R.string.different_passwords_message)
+                }
             } else {
                 if(username.text.toString().isEmpty()) {
                     username_parent.error = getString(R.string.empty_username)

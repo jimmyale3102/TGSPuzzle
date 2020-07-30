@@ -17,6 +17,7 @@
     <string name="invalid_account">La cuenta no existe</string>
     <string name="empty_username">Digite el usuario</string>
     <string name="empty_password">Digite la contraseña</string>
+    <string name="different_passwords_message">Las contraseñas no coinciden</string>
     <string name="invalid_password">La contraseña debe tener al menos 6 caracteres alfanuméricos</string>
     <string name="authentication_failed">Fallo de autenticación</string>
     <string name="account_exists_message">La cuenta ya existe</string>
