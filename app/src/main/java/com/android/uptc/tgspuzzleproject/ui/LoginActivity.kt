@@ -115,6 +115,10 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         google_login.setOnClickListener { googleSignIn() }
         login_button.setOnClickListener { emailAndPasswordSignIn() }
+        register_button.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
+        }
         username.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(p0: Editable?) {}
 
@@ -140,7 +144,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
     }
 }
