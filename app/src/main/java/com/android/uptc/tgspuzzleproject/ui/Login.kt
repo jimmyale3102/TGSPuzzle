@@ -3,6 +3,8 @@ package com.android.uptc.tgspuzzleproject.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -10,9 +12,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class Login : AppCompatActivity() {
@@ -29,6 +29,42 @@ class Login : AppCompatActivity() {
     private fun googleSignIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    private fun emailAndPasswordSignIn() {
+        if (username.text.toString().isNotEmpty()
+            && password.text.toString().isNotEmpty()
+        ) {
+            auth.signInWithEmailAndPassword(
+                username.text.toString(),
+                password.text.toString()
+            )
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        signIn()
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        when(task.exception) {
+                            is FirebaseAuthWeakPasswordException ->
+                                login_button.snack(R.string.invalid_password)
+                            is FirebaseAuthInvalidUserException ->
+                                login_button.snack(R.string.invalid_user)
+                            is FirebaseAuthInvalidCredentialsException ->
+                                login_button.snack(R.string.invalid_or_null_password)
+                            else -> login_button.snack(R.string.authentication_failed)
+                        }
+                    }
+                }
+        } else {
+            if(username.text.toString().isEmpty()) {
+                login_button.snack(R.string.empty_username)
+            }
+            if(password.text.toString().isEmpty()) {
+                password_parent.error = getString(R.string.empty_password)
+            }
+            login_button.snack(R.string.complete_information_message)
+        }
     }
 
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
@@ -78,6 +114,29 @@ class Login : AppCompatActivity() {
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         google_login.setOnClickListener { googleSignIn() }
+        login_button.setOnClickListener { emailAndPasswordSignIn() }
+        username.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(sequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if(sequence!!.toString().isNotEmpty()) {
+                    username_parent.error = null
+                }
+            }
+        })
+        password.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(sequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if(sequence!!.toString().isNotEmpty()) {
+                    password_parent.error = null
+                }
+            }
+        })
     }
 
     companion object {
