@@ -24,4 +24,10 @@
     <string name="invalid_or_null_password">Contraseña inválida</string>
     <string name="invalid_user">El usuario no exite</string>
 
+    <!-- ============================================== -->
+
+    <!-- Home -->
+    <string name="crossword_home">Crucigrama</string>
+    <string name="search_word_home">Sopa de letras</string>
+
 </resources>
