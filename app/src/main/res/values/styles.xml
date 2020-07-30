@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
@@ -13,6 +13,7 @@
         <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
         <item name="colorOnSecondary">@color/secondaryTextColor</item>
 
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
         <item name="materialButtonStyle">@style/Widget.MyApp.MyButton</item>
     </style>
 

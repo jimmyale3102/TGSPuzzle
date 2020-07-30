@@ -6,6 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
+        android:text="@string/login_title"
+        android:textColor="@color/primaryDarkColor"
+        android:textAlignment="center"
+        android:textSize="40sp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,10 +23,18 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logo"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/username_parent"
+            android:layout_below="@id/logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
             android:hint="@string/input_username"
             app:errorEnabled="true">
 

@@ -3,6 +3,7 @@
 
     <!-- Login -->
 
+    <string name="login_title">TGS Puzzle</string>
     <string name="input_username">Usuario</string>
     <string name="input_password">Contraseña</string>
     <string name="login">Iniciar sesión</string>
