@@ -13,4 +13,6 @@
     <!-- Base colors -->
     <color name="blackColor">#000</color>
     <color name="whiteColor">#fff</color>
+    <!-- Google -->
+    <color name="googleColor">#ea4335</color>
 </resources>
