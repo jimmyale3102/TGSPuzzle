@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun emailAndPasswordSignIn() {
         if (username.text.toString().isNotEmpty()
-            && password.text.toString().isNotEmpty()
+            || password.text.toString().isNotEmpty()
         ) {
             auth.signInWithEmailAndPassword(
                 username.text.toString(),
@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
                 }
         } else {
             if(username.text.toString().isEmpty()) {
-                login_button.snack(R.string.empty_username)
+                username_parent.error = getString(R.string.empty_username)
             }
             if(password.text.toString().isEmpty()) {
                 password_parent.error = getString(R.string.empty_password)
