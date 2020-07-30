@@ -3,18 +3,24 @@
     android:id="@+id/home_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/home_toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:minHeight="?attr/actionBarSize"
-        android:elevation="4dp"
-        android:fitsSystemWindows="true"
-        android:theme="?attr/actionBarTheme"/>
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/home_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primaryColor"
+            android:minHeight="?attr/actionBarSize"
+            android:elevation="4dp"
+            android:fitsSystemWindows="true"
+            android:theme="?attr/actionBarTheme"/>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
