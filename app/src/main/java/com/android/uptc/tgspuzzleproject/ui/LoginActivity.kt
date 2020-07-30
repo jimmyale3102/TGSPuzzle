@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
             if(password.text.toString().isEmpty()) {
                 password_parent.error = getString(R.string.empty_password)
             }
-            login_button.snack(R.string.complete_information_message)
+            login_layout.snack(R.string.complete_information_message)
         }
     }
 
