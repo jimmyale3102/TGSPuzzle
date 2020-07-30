@@ -6,6 +6,7 @@
     <string name="login_title">TGS Puzzle</string>
     <string name="input_username">Usuario</string>
     <string name="input_password">Contraseña</string>
+    <string name="input_reply_password">Repetir contraseña</string>
     <string name="login">Iniciar sesión</string>
     <string name="register">Registrarse</string>
     <string name="google_login">Iniciar con google</string>
