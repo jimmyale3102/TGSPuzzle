@@ -102,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signIn() {
-        //startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 
