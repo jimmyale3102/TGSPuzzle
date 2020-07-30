@@ -30,4 +30,8 @@
     <string name="crossword_home">Crucigrama</string>
     <string name="search_word_home">Sopa de letras</string>
 
+    <!-- Home menu -->
+    <string name="crossword_score_item">Puntajes de crucigrama</string>
+    <string name="search_word_score_item">Puntajes de sopa de letras</string>
+
 </resources>
