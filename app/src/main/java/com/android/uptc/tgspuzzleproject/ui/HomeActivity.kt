@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -18,7 +19,6 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setSupportActionBar(home_toolbar)
         initComponents()
     }
 
@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val drawerToggle = object: ActionBarDrawerToggle(
             this,
             home_layout,
-            null,
+            home_toolbar,
             R.string.open_drawer,
             R.string.close_drawer
         ) {
