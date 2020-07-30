@@ -31,6 +31,8 @@
     <string name="search_word_home">Sopa de letras</string>
 
     <!-- Home menu -->
+    <string name="username_header">Usuario</string>
+    <string name="score_header">Puntuación</string>
     <string name="crossword_score_item">Puntajes de crucigrama</string>
     <string name="search_word_score_item">Puntajes de sopa de letras</string>
     <string name="about_item">Acecrca de</string>
