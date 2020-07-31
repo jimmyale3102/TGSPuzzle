@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primaryDarkColor">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/username_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:text="@string/username_header"
+        android:textColor="@color/whiteColor"
+        android:textSize="22sp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/username"
+        android:layout_below="@id/username_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:text="asdasdssdad"
+        android:textSize="18sp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/score_title"
+        android:layout_below="@id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:text="@string/score_header"
+        android:textSize="22sp"
+        android:textColor="@color/whiteColor"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/user_score"
+        android:layout_below="@id/score_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:text="asdasdssad"
+        android:textSize="18sp"/>
+
+</RelativeLayout>

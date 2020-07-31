@@ -24,4 +24,19 @@
     <string name="invalid_or_null_password">Contraseña inválida</string>
     <string name="invalid_user">El usuario no exite</string>
 
+    <!-- ============================================== -->
+
+    <!-- Home -->
+    <string name="crossword_home">Crucigrama</string>
+    <string name="search_word_home">Sopa de letras</string>
+
+    <!-- Home menu -->
+    <string name="open_drawer">Abrir</string>
+    <string name="close_drawer">Cerrar</string>
+    <string name="username_header">Usuario</string>
+    <string name="score_header">Puntuación</string>
+    <string name="crossword_score_item">Puntajes de crucigrama</string>
+    <string name="search_word_score_item">Puntajes de sopa de letras</string>
+    <string name="about_item">Acecrca de</string>
+
 </resources>
