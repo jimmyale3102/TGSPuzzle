@@ -1,5 +1,6 @@
 package com.android.uptc.tgspuzzleproject.ui
 
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,15 +11,28 @@ import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import com.android.uptc.tgspuzzleproject.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.home_menu_header.view.*
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private lateinit var googleSignInClient: GoogleSignInClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
         initComponents()
     }
 
@@ -70,23 +84,27 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 R.id.about_item -> {
                     //showGenderFilter()
                 }
+                R.id.logout_item -> logout()
             }
             true
         }
         home_layout.closeDrawer(GravityCompat.START)
     }
 
+    private fun logout() {
+        auth.signOut()
+        googleSignInClient.signOut().addOnCompleteListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.crossword_score_item -> {
-                return true
-            }
-            R.id.search_word_item -> {
-                return true
-            }
-            R.id.about_item -> {
-                return true
-            }
+            R.id.crossword_score_item -> return true
+            R.id.search_word_item -> return true
+            R.id.about_item -> return true
+            R.id.logout_item -> return true
         }
         return false
     }

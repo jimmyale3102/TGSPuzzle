@@ -21,7 +21,7 @@
     </group>
 
     <item
-        android:id="@+id/logout"
+        android:id="@+id/logout_item"
         android:title="@string/logout_item"/>
 
 
