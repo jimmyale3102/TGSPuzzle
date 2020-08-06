@@ -36,10 +36,6 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         initComponents()
     }
 
-    private fun initComponents() {
-        configNavigation()
-    }
-
     private fun configNavigation() {
         val drawerToggle = object: ActionBarDrawerToggle(
             this,
@@ -97,6 +93,11 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+    }
+
+    private fun initComponents() {
+        configNavigation()
+        //cross_word_content.setOnClickListener {  }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
