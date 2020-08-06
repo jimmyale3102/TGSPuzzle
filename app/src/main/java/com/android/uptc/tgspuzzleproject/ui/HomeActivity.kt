@@ -118,6 +118,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             alertDialog.show()
             dialogView.easy_button.setOnClickListener {
                 GlobalValues.levelGame = EASY
+                startActivity(Intent(this, CrossWordActivity::class.java))
                 alertDialog.dismiss()
             }
             dialogView.hard_button.setOnClickListener {
