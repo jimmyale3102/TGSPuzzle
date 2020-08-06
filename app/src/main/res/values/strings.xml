@@ -29,6 +29,9 @@
     <!-- Home -->
     <string name="crossword_home">Crucigrama</string>
     <string name="search_word_home">Sopa de letras</string>
+    <string name="level_game_title">Elije la dificultad</string>
+    <string name="easy_level_game">Fácil</string>
+    <string name="hard_level_game">Dificil</string>
 
     <!-- Home menu -->
     <string name="open_drawer">Abrir</string>
@@ -39,5 +42,6 @@
     <string name="search_word_score_item">Puntajes de sopa de letras</string>
     <string name="about_item">Acecrca de</string>
     <string name="logout_item">Cerrar sesión</string>
+
 
 </resources>
