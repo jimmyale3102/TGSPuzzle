@@ -5,10 +5,10 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.util.DisplayMetrics
+import android.view.*
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import com.android.uptc.tgspuzzleproject.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.alert_level_game.view.*
 import kotlinx.android.synthetic.main.home_menu_header.view.*
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -97,7 +98,39 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private fun initComponents() {
         configNavigation()
-        //cross_word_content.setOnClickListener {  }
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.alert_level_game, null)
+        val builder = AlertDialog.Builder(this).setView(dialogView)
+        val alertDialog = builder.create()
+
+        alertDialog.setCancelable(false)
+        // Set width alert
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val displayWidth: Int = displayMetrics.widthPixels
+        val layoutParams: WindowManager.LayoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(alertDialog.window?.attributes)
+        val dialogWindowWidth = (displayWidth * 0.8f).toInt()
+        layoutParams.width = dialogWindowWidth
+        alertDialog.window?.attributes = layoutParams
+
+        cross_word_content.setOnClickListener {
+            alertDialog.show()
+            dialogView.easy_button.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            dialogView.hard_button.setOnClickListener {
+                alertDialog.dismiss()
+            }
+        }
+        search_word_content.setOnClickListener {
+            alertDialog.show()
+            dialogView.easy_button.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            dialogView.hard_button.setOnClickListener {
+                alertDialog.dismiss()
+            }
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
