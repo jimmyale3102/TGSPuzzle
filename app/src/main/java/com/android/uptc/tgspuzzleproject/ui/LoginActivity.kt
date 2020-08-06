@@ -22,8 +22,17 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initComponents()
+        if (checkCurrentUser()) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        } else {
+            setContentView(R.layout.activity_main)
+            initComponents()
+        }
+    }
+
+    private fun checkCurrentUser(): Boolean {
+        return FirebaseAuth.getInstance().currentUser != null
     }
 
     private fun googleSignIn() {
