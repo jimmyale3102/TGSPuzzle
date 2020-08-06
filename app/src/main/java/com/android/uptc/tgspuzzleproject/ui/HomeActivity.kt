@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import com.android.uptc.tgspuzzleproject.R
+import com.android.uptc.tgspuzzleproject.logic.GlobalValues
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -116,18 +117,22 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         cross_word_content.setOnClickListener {
             alertDialog.show()
             dialogView.easy_button.setOnClickListener {
+                GlobalValues.levelGame = EASY
                 alertDialog.dismiss()
             }
             dialogView.hard_button.setOnClickListener {
+                GlobalValues.levelGame = HARD
                 alertDialog.dismiss()
             }
         }
         search_word_content.setOnClickListener {
             alertDialog.show()
             dialogView.easy_button.setOnClickListener {
+                GlobalValues.levelGame = EASY
                 alertDialog.dismiss()
             }
             dialogView.hard_button.setOnClickListener {
+                GlobalValues.levelGame = HARD
                 alertDialog.dismiss()
             }
         }
@@ -141,5 +146,10 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.logout_item -> return true
         }
         return false
+    }
+
+    companion object {
+        const val EASY = 0
+        const val HARD = 1
     }
 }
