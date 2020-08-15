@@ -27,10 +27,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         if (checkCurrentUser()) {
             startActivity(Intent(this, HomeActivity::class.java))
+            GlobalValues.playerId = FirebaseAuth.getInstance().currentUser!!.uid
             finish()
         } else {
             setContentView(R.layout.activity_main)
-            GlobalValues.playerId = FirebaseAuth.getInstance().uid!!
             initComponents()
         }
     }

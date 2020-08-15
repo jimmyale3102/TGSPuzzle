@@ -116,7 +116,7 @@ class CrossWordActivity : AppCompatActivity(),
 
     private fun saveScore(dialogView: View) {
         val easyScore = hashMapOf(
-            "crossword-easyScore" to score
+            "crosswordEasyScore" to score
         )
         databaseInstance.collection("players").document(GlobalValues.playerId)
             .set(easyScore, SetOptions.merge())
@@ -132,7 +132,6 @@ class CrossWordActivity : AppCompatActivity(),
             crossword!!.selectedWord!!,
             crossword!!.selectedCell, letter, true
         )
-        Log.d("Time----->", (SystemClock.elapsedRealtime() - timer.base).toString())
         Log.d("==SelectedCell", crossword.selectedCell.toString())
         Log.d("==SelectedWord", crossword.selectedWord.toString())
         Log.d("==Correct letter", crossword.selectedWord[crossword.selectedCell].toString())
