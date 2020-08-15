@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">TGSPuzz</string>
     <string name="ok_button">OK</string>
+    <string name="saving_score">Guardando puntuación</string>
+    <string name="score_saved">Puntuación guardada</string>
 
     <!-- Login -->
 

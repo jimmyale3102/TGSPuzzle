@@ -1,6 +1,5 @@
 package com.android.uptc.tgspuzzleproject.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
@@ -13,8 +12,8 @@ import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.android.uptc.tgspuzzleproject.logic.GlobalValues
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_cross_word.*
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.alert_level_game.view.*
 import org.akop.ararat.core.Crossword
 import org.akop.ararat.core.buildCrossword
@@ -86,11 +85,15 @@ class CrossWordActivity : AppCompatActivity(),
         dialogView.easy_button.visibility = View.GONE
         dialogView.hard_button.text = getString(R.string.ok_button)
         dialogView.title.text = getString(R.string.youve_solved_the_puzzle)
+        dialogView.loading.visibility = View.VISIBLE
+        dialogView.description.text = getString(R.string.saving_score)
+        dialogView.hard_button.visibility = View.GONE
         dialogView.hard_button.setOnClickListener {
             alertDialog.dismiss()
             finish()
         }
         alertDialog.show()
+        saveScore(dialogView)
 
         cross_word_layout.snack(R.string.youve_solved_the_puzzle)
     }
@@ -109,6 +112,19 @@ class CrossWordActivity : AppCompatActivity(),
             Crossword.Word.DIR_DOWN -> getString(R.string.down, word.number, word.hint)
             else -> ""
         }
+    }
+
+    private fun saveScore(dialogView: View) {
+        val easyScore = hashMapOf(
+            "crossword-easyScore" to score
+        )
+        databaseInstance.collection("players").document(GlobalValues.playerId)
+            .set(easyScore, SetOptions.merge())
+            .addOnSuccessListener {
+                dialogView.loading.visibility = View.GONE
+                dialogView.hard_button.visibility = View.VISIBLE
+                dialogView.description.text = getString(R.string.score_saved)
+            }
     }
 
     private fun setLetter(letter: String) {
