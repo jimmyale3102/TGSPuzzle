@@ -9,6 +9,7 @@
     tools:context=".ui.CrossWordActivity">
 
     <RelativeLayout
+        android:id="@+id/timer_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_small"
@@ -46,6 +47,7 @@
 
     <org.akop.ararat.view.CrosswordView
         android:id="@+id/crossword"
+        android:layout_below="@id/timer_content"
         android:layout_above="@id/hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

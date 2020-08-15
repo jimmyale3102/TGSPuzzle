@@ -3,6 +3,7 @@ package com.android.uptc.tgspuzzleproject.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
@@ -25,6 +26,7 @@ class CrossWordActivity : AppCompatActivity(),
     CrosswordView.OnSelectionChangeListener  {
 
     private var puzzleNumber = 0
+    private var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,10 @@ class CrossWordActivity : AppCompatActivity(),
     override fun onCrosswordChanged(view: CrosswordView) {}
 
     override fun onCrosswordSolved(view: CrosswordView) {
+        val minutes = timer.text.toString().split(":")[0]
+        val seconds = timer.text.toString().split(":")[1]
+        score = (minutes + seconds).toInt()
+
         val dialogView = LayoutInflater.from(this).inflate(R.layout.alert_level_game, null)
         val builder = AlertDialog.Builder(this).setView(dialogView)
         val alertDialog = builder.create()
@@ -108,6 +114,7 @@ class CrossWordActivity : AppCompatActivity(),
             crossword!!.selectedWord!!,
             crossword!!.selectedCell, letter, true
         )
+        Log.d("Time----->", (SystemClock.elapsedRealtime() - timer.base).toString())
         Log.d("==SelectedCell", crossword.selectedCell.toString())
         Log.d("==SelectedWord", crossword.selectedWord.toString())
         Log.d("==Correct letter", crossword.selectedWord[crossword.selectedCell].toString())
@@ -128,6 +135,7 @@ class CrossWordActivity : AppCompatActivity(),
     }
 
     private fun initComponents() {
+        exit_button.setOnClickListener { finish() }
         puzzleNumber = (0..5).random()
         crossword.crossword = readPuzzle()
         val crosswordSource = readPuzzle(getPuzzlePath())
@@ -145,6 +153,10 @@ class CrossWordActivity : AppCompatActivity(),
 
             onSelectionChanged(cv, cv.selectedWord, cv.selectedCell)
         }
+        // Timer
+        timer.base = SystemClock.elapsedRealtime()
+        timer.start()
+
         a_button.setOnClickListener {
             setLetter(getString(R.string.a_label))
         }
