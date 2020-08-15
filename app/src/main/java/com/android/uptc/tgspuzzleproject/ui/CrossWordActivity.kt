@@ -78,8 +78,7 @@ class CrossWordActivity : AppCompatActivity(),
     override fun onCrosswordChanged(view: CrosswordView) {}
 
     override fun onCrosswordSolved(view: CrosswordView) {
-        Toast.makeText(this, R.string.youve_solved_the_puzzle,
-            Toast.LENGTH_SHORT).show()
+        cross_word_layout.snack(R.string.youve_solved_the_puzzle)
     }
 
     override fun onCrosswordUnsolved(view: CrosswordView) { }
@@ -100,7 +99,7 @@ class CrossWordActivity : AppCompatActivity(),
 
     private fun initComponents() {
         crossword.crossword = readPuzzle()
-        val crosswordSource = readPuzzle(R.raw.puzzle)
+        val crosswordSource = readPuzzle(R.raw.puz)
 
         crossword!!.let { cv ->
             cv.crossword = crosswordSource
