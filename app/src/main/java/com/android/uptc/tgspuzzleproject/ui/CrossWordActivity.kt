@@ -1,15 +1,19 @@
 package com.android.uptc.tgspuzzleproject.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
 import androidx.annotation.RawRes
+import androidx.appcompat.app.AlertDialog
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.android.uptc.tgspuzzleproject.logic.GlobalValues
 import kotlinx.android.synthetic.main.activity_cross_word.*
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.alert_level_game.view.*
 import org.akop.ararat.core.Crossword
 import org.akop.ararat.core.buildCrossword
 import org.akop.ararat.io.PuzFormatter
@@ -28,7 +32,7 @@ class CrossWordActivity : AppCompatActivity(),
         initComponents()
     }
 
-    private fun readPuzzle(): Crossword = resources.openRawResource(R.raw.puz).use { s ->
+    private fun readPuzzle(): Crossword = resources.openRawResource(getPuzzlePath()).use { s ->
         buildCrossword { PuzFormatter().read(this, s) }
     }
 
@@ -49,31 +53,6 @@ class CrossWordActivity : AppCompatActivity(),
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_restart -> {
-                crossword!!.reset()
-                return true
-            }
-            R.id.menu_solve_cell -> {
-                crossword!!.solveChar(crossword!!.selectedWord!!,
-                    crossword!!.selectedCell)
-                return true
-            }
-            R.id.menu_solve_word -> {
-                crossword!!.solveWord(crossword!!.selectedWord!!)
-                return true
-            }
-            R.id.menu_solve_puzzle -> {
-                crossword!!.solveCrossword()
-                Log.d("==Is Solved", crossword.isSolved.toString())
-                return true
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
     override fun onCellLongPressed(view: CrosswordView,
                                    word: Crossword.Word, cell: Int) {
         cross_word_layout.snack("Show popup menu for " + word.hint!!)
@@ -82,6 +61,28 @@ class CrossWordActivity : AppCompatActivity(),
     override fun onCrosswordChanged(view: CrosswordView) {}
 
     override fun onCrosswordSolved(view: CrosswordView) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.alert_level_game, null)
+        val builder = AlertDialog.Builder(this).setView(dialogView)
+        val alertDialog = builder.create()
+
+        alertDialog.setCancelable(false)
+        // Set width alert
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val displayWidth: Int = displayMetrics.widthPixels
+        val layoutParams: WindowManager.LayoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(alertDialog.window?.attributes)
+        val dialogWindowWidth = (displayWidth * 0.8f).toInt()
+        layoutParams.width = dialogWindowWidth
+        alertDialog.window?.attributes = layoutParams
+        dialogView.easy_button.visibility = View.GONE
+        dialogView.hard_button.text = getString(R.string.ok_button)
+        dialogView.hard_button.setOnClickListener {
+            alertDialog.dismiss()
+            finish()
+        }
+        alertDialog.show()
+
         cross_word_layout.snack(R.string.youve_solved_the_puzzle)
     }
 
@@ -106,29 +107,29 @@ class CrossWordActivity : AppCompatActivity(),
             crossword!!.selectedWord!!,
             crossword!!.selectedCell, letter, true
         )
+        Log.d("==SelectedCell", crossword.selectedCell.toString())
+        Log.d("==SelectedWord", crossword.selectedWord.toString())
+        Log.d("==Correct letter", crossword.selectedWord[crossword.selectedCell].toString())
+        Log.d("==Is Solved", crossword.isSolved.toString())
     }
 
-    private fun getPuzzle(): Crossword {
+    private fun getPuzzlePath(): Int {
         return if(GlobalValues.levelGame == EASY) {
             when(puzzleNumber) {
-                1 -> readPuzzle(R.raw.easy_puzzle_1)
-                2 -> readPuzzle(R.raw.easy_puzzle_2)
-                3 -> readPuzzle(R.raw.easy_puzzle_3)
-                else -> readPuzzle(R.raw.easy_puzzle_4)
+                1 -> R.raw.easy_puzzle_1
+                2 -> R.raw.easy_puzzle_2
+                3 -> R.raw.easy_puzzle_3
+                else -> R.raw.easy_puzzle_4
             }
         } else {
-            readPuzzle(R.raw.puz)
+            R.raw.puz
         }
     }
 
     private fun initComponents() {
         puzzleNumber = (0..5).random()
-        Log.d("==SelectedCell", crossword.selectedCell.toString())
-        Log.d("==SelectedWord", crossword.selectedWord.toString())
-        Log.d("==Correct letter", crossword.selectedWord[crossword.selectedCell].toString())
-        Log.d("==Is Solved", crossword.isSolved.toString())
         crossword.crossword = readPuzzle()
-        val crosswordSource = getPuzzle()
+        val crosswordSource = readPuzzle(getPuzzlePath())
 
         crossword!!.let { cv ->
             cv.crossword = crosswordSource
@@ -224,6 +225,31 @@ class CrossWordActivity : AppCompatActivity(),
         z_button.setOnClickListener {
             setLetter(getString(R.string.z_label))
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_restart -> {
+                crossword!!.reset()
+                return true
+            }
+            R.id.menu_solve_cell -> {
+                crossword!!.solveChar(crossword!!.selectedWord!!,
+                    crossword!!.selectedCell)
+                return true
+            }
+            R.id.menu_solve_word -> {
+                crossword!!.solveWord(crossword!!.selectedWord!!)
+                return true
+            }
+            R.id.menu_solve_puzzle -> {
+                crossword!!.solveCrossword()
+                Log.d("==Is Solved", crossword.isSolved.toString())
+                return true
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
