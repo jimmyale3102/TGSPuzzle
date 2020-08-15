@@ -22,7 +22,7 @@
         android:layout_marginBottom="@dimen/margin_xs"
         android:minLines="3"
         android:maxLines="3"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:background="@color/secondaryLightColor"/>
 
     <LinearLayout
