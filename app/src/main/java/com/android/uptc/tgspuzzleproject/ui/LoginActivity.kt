@@ -14,6 +14,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.*
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_main.*
 
 class LoginActivity : AppCompatActivity() {
@@ -84,7 +86,13 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    signIn()
+                    val databaseInstance = FirebaseFirestore.getInstance()
+                    val userData = hashMapOf(
+                        "username" to account.displayName!!
+                    )
+                    databaseInstance.collection("players").document(auth.uid!!)
+                        .set(userData, SetOptions.merge())
+                        .addOnSuccessListener { signIn() }
                 } else {
                     // If sign in fails, display a message to the user.
                     when(task.exception) {
