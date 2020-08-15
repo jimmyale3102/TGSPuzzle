@@ -7,6 +7,7 @@
     tools:context=".ui.CrossWordActivity">
 
     <org.akop.ararat.view.CrosswordView
+        android:id="@+id/crossword"
         android:layout_above="@id/hint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
