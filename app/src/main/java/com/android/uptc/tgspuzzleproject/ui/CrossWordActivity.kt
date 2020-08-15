@@ -97,7 +97,18 @@ class CrossWordActivity : AppCompatActivity(),
         }
     }
 
+    private fun setLetter(letter: String) {
+        crossword.setCellContents(
+            crossword!!.selectedWord!!,
+            crossword!!.selectedCell, letter, true
+        )
+    }
+
     private fun initComponents() {
+        Log.d("==SelectedCell", crossword.selectedCell.toString())
+        Log.d("==SelectedWord", crossword.selectedWord.toString())
+        Log.d("==Correct letter", crossword.selectedWord[crossword.selectedCell].toString())
+        Log.d("==Is Solved", crossword.isSolved.toString())
         crossword.crossword = readPuzzle()
         val crosswordSource = readPuzzle(R.raw.puz)
 
@@ -115,14 +126,85 @@ class CrossWordActivity : AppCompatActivity(),
             onSelectionChanged(cv, cv.selectedWord, cv.selectedCell)
         }
         a_button.setOnClickListener {
-            crossword.setCellContents(
-                crossword!!.selectedWord!!,
-                crossword!!.selectedCell, "B", true
-            )
-            Log.d("==SelectedCell", crossword.selectedCell.toString())
-            Log.d("==SelectedWord", crossword.selectedWord.toString())
-            Log.d("==Correct letter", crossword.selectedWord[crossword.selectedCell].toString())
-            Log.d("==Is Solved", crossword.isSolved.toString())
+            setLetter(getString(R.string.a_label))
+        }
+        b_button.setOnClickListener {
+            setLetter(getString(R.string.b_label))
+        }
+        c_button.setOnClickListener {
+            setLetter(getString(R.string.c_label))
+        }
+        d_button.setOnClickListener {
+            setLetter(getString(R.string.d_label))
+        }
+        e_button.setOnClickListener {
+            setLetter(getString(R.string.e_label))
+        }
+        f_button.setOnClickListener {
+            setLetter(getString(R.string.f_label))
+        }
+        g_button.setOnClickListener {
+            setLetter(getString(R.string.g_label))
+        }
+        h_button.setOnClickListener {
+            setLetter(getString(R.string.h_label))
+        }
+        i_button.setOnClickListener {
+            setLetter(getString(R.string.i_label))
+        }
+        j_button.setOnClickListener {
+            setLetter(getString(R.string.j_label))
+        }
+        k_button.setOnClickListener {
+            setLetter(getString(R.string.k_label))
+        }
+        l_button.setOnClickListener {
+            setLetter(getString(R.string.l_label))
+        }
+        m_button.setOnClickListener {
+            setLetter(getString(R.string.m_label))
+        }
+        n_button.setOnClickListener {
+            setLetter(getString(R.string.n_label))
+        }
+        ñ_button.setOnClickListener {
+            setLetter(getString(R.string.ñ_label))
+        }
+        o_button.setOnClickListener {
+            setLetter(getString(R.string.o_label))
+        }
+        p_button.setOnClickListener {
+            setLetter(getString(R.string.p_label))
+        }
+        q_button.setOnClickListener {
+            setLetter(getString(R.string.q_label))
+        }
+        r_button.setOnClickListener {
+            setLetter(getString(R.string.r_label))
+        }
+        s_button.setOnClickListener {
+            setLetter(getString(R.string.s_label))
+        }
+        t_button.setOnClickListener {
+            setLetter(getString(R.string.t_label))
+        }
+        u_button.setOnClickListener {
+            setLetter(getString(R.string.u_label))
+        }
+        v_button.setOnClickListener {
+            setLetter(getString(R.string.v_label))
+        }
+        w_button.setOnClickListener {
+            setLetter(getString(R.string.w_label))
+        }
+        x_button.setOnClickListener {
+            setLetter(getString(R.string.x_label))
+        }
+        y_button.setOnClickListener {
+            setLetter(getString(R.string.y_label))
+        }
+        z_button.setOnClickListener {
+            setLetter(getString(R.string.z_label))
         }
     }
 }
