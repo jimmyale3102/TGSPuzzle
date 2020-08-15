@@ -109,15 +109,15 @@ class CrossWordActivity : AppCompatActivity(),
     }
 
     private fun getPuzzle(): Crossword {
-        if(GlobalValues.levelGame == EASY) {
+        return if(GlobalValues.levelGame == EASY) {
             when(puzzleNumber) {
-                1 -> return readPuzzle(R.raw.puz)
-                2 -> return readPuzzle(R.raw.puz)
-                3 -> return readPuzzle(R.raw.puz)
-                else -> return readPuzzle(R.raw.puz)
+                1 -> readPuzzle(R.raw.easy_puzzle_1)
+                2 -> readPuzzle(R.raw.easy_puzzle_2)
+                3 -> readPuzzle(R.raw.easy_puzzle_3)
+                else -> readPuzzle(R.raw.easy_puzzle_4)
             }
         } else {
-            return readPuzzle(R.raw.puz)
+            readPuzzle(R.raw.puz)
         }
     }
 
