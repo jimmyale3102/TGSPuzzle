@@ -1,29 +1,41 @@
 package com.android.uptc.tgspuzzleproject.ui
 
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.util.DisplayMetrics
+import android.view.*
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import com.android.uptc.tgspuzzleproject.R
+import com.android.uptc.tgspuzzleproject.logic.GlobalValues
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.alert_level_game.view.*
 import kotlinx.android.synthetic.main.home_menu_header.view.*
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private lateinit var googleSignInClient: GoogleSignInClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        initComponents()
-    }
 
-    private fun initComponents() {
-        configNavigation()
+        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions)
+        initComponents()
     }
 
     private fun configNavigation() {
@@ -70,24 +82,75 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 R.id.about_item -> {
                     //showGenderFilter()
                 }
+                R.id.logout_item -> logout()
             }
             true
         }
         home_layout.closeDrawer(GravityCompat.START)
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.crossword_score_item -> {
-                return true
+    private fun logout() {
+        auth.signOut()
+        googleSignInClient.signOut().addOnCompleteListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun initComponents() {
+        configNavigation()
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.alert_level_game, null)
+        val builder = AlertDialog.Builder(this).setView(dialogView)
+        val alertDialog = builder.create()
+
+        alertDialog.setCancelable(false)
+        // Set width alert
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val displayWidth: Int = displayMetrics.widthPixels
+        val layoutParams: WindowManager.LayoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(alertDialog.window?.attributes)
+        val dialogWindowWidth = (displayWidth * 0.8f).toInt()
+        layoutParams.width = dialogWindowWidth
+        alertDialog.window?.attributes = layoutParams
+
+        cross_word_content.setOnClickListener {
+            alertDialog.show()
+            dialogView.easy_button.setOnClickListener {
+                GlobalValues.levelGame = EASY
+                startActivity(Intent(this, CrossWordActivity::class.java))
+                alertDialog.dismiss()
             }
-            R.id.search_word_item -> {
-                return true
-            }
-            R.id.about_item -> {
-                return true
+            dialogView.hard_button.setOnClickListener {
+                GlobalValues.levelGame = HARD
+                alertDialog.dismiss()
             }
         }
+        search_word_content.setOnClickListener {
+            alertDialog.show()
+            dialogView.easy_button.setOnClickListener {
+                GlobalValues.levelGame = EASY
+                alertDialog.dismiss()
+            }
+            dialogView.hard_button.setOnClickListener {
+                GlobalValues.levelGame = HARD
+                alertDialog.dismiss()
+            }
+        }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.crossword_score_item -> return true
+            R.id.search_word_item -> return true
+            R.id.about_item -> return true
+            R.id.logout_item -> return true
+        }
         return false
+    }
+
+    companion object {
+        const val EASY = 0
+        const val HARD = 1
     }
 }

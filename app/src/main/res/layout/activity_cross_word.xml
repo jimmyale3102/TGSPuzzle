@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CrossWordActivity">
+
+    <org.akop.ararat.view.CrosswordView
+        android:layout_above="@id/hint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_above="@id/keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_xs"
+        android:minLines="3"
+        android:maxLines="3"
+        android:textColor="#000"
+        android:background="@color/secondaryLightColor"/>
+
+    <LinearLayout
+        android:id="@+id/keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/secondaryLightColor"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/q_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/q_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/w_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/w_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/e_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/e_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/r_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/r_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/t_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/t_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/y_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/y_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/u_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/u_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/i_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/i_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/o_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/o_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/p_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/p_label"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/a_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/a_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/s_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/s_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/d_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/d_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/f_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/f_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/g_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/g_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/h_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/h_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/j_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/j_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/k_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/k_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/l_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/l_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/ñ_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/ñ_label"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/z_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/z_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/x_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/x_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/c_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/c_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/v_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/v_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/b_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/b_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/n_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/n_label"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/m_button"
+                android:layout_width="@dimen/width_button"
+                android:layout_height="@dimen/height_button"
+                android:text="@string/m_label"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

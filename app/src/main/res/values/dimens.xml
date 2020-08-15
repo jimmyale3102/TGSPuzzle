@@ -11,4 +11,7 @@
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_x_large">64dp</dimen>
+
+    <dimen name="width_button">40dp</dimen>
+    <dimen name="height_button">45dp</dimen>
 </resources>

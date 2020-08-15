@@ -29,6 +29,10 @@
     <!-- Home -->
     <string name="crossword_home">Crucigrama</string>
     <string name="search_word_home">Sopa de letras</string>
+    <string name="level_game_title">Elije la dificultad</string>
+    <string name="level_game_description">Piénsalo bien!...</string>
+    <string name="easy_level_game">Fácil</string>
+    <string name="hard_level_game">Dificil</string>
 
     <!-- Home menu -->
     <string name="open_drawer">Abrir</string>
@@ -38,5 +42,36 @@
     <string name="crossword_score_item">Puntajes de crucigrama</string>
     <string name="search_word_score_item">Puntajes de sopa de letras</string>
     <string name="about_item">Acecrca de</string>
+    <string name="logout_item">Cerrar sesión</string>
+
+    <!-- CROSSWORD -->
+    <string name="a_label">A</string>
+    <string name="b_label">B</string>
+    <string name="c_label">C</string>
+    <string name="d_label">D</string>
+    <string name="e_label">E</string>
+    <string name="f_label">F</string>
+    <string name="g_label">G</string>
+    <string name="h_label">H</string>
+    <string name="i_label">I</string>
+    <string name="j_label">J</string>
+    <string name="k_label">K</string>
+    <string name="l_label">L</string>
+    <string name="m_label">M</string>
+    <string name="n_label">N</string>
+    <string name="ñ_label">Ñ</string>
+    <string name="o_label">O</string>
+    <string name="p_label">P</string>
+    <string name="q_label">Q</string>
+    <string name="r_label">R</string>
+    <string name="s_label">S</string>
+    <string name="t_label">T</string>
+    <string name="u_label">U</string>
+    <string name="v_label">V</string>
+    <string name="w_label">W</string>
+    <string name="x_label">X</string>
+    <string name="y_label">Y</string>
+    <string name="z_label">Z</string>
+
 
 </resources>
