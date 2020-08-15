@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
+import com.android.uptc.tgspuzzleproject.logic.GlobalValues
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -27,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
             finish()
         } else {
             setContentView(R.layout.activity_main)
+            GlobalValues.playerId = FirebaseAuth.getInstance().uid!!
             initComponents()
         }
     }

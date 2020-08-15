@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.android.uptc.tgspuzzleproject.logic.GlobalValues
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_cross_word.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.alert_level_game.view.*
@@ -25,6 +26,7 @@ class CrossWordActivity : AppCompatActivity(),
     CrosswordView.OnStateChangeListener,
     CrosswordView.OnSelectionChangeListener  {
 
+    private val databaseInstance by lazy { FirebaseFirestore.getInstance() }
     private var puzzleNumber = 0
     private var score = 0
 
