@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.RawRes
 import com.android.uptc.tgspuzzleproject.R
+import com.android.uptc.tgspuzzleproject.extensions.snack
 import kotlinx.android.synthetic.main.activity_cross_word.*
 import org.akop.ararat.core.Crossword
 import org.akop.ararat.core.buildCrossword
@@ -71,8 +72,7 @@ class CrossWordActivity : AppCompatActivity(),
 
     override fun onCellLongPressed(view: CrosswordView,
                                    word: Crossword.Word, cell: Int) {
-        Toast.makeText(this, "Show popup menu for " + word.hint!!,
-            Toast.LENGTH_SHORT).show()
+        cross_word_layout.snack("Show popup menu for " + word.hint!!)
     }
 
     override fun onCrosswordChanged(view: CrosswordView) {}

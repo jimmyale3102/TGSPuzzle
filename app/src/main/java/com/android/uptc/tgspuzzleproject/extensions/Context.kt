@@ -7,3 +7,6 @@ import com.google.android.material.snackbar.Snackbar
 fun View.snack(@StringRes message: Int, duration: Int = Snackbar.LENGTH_LONG) {
     Snackbar.make(this, message, duration).show()
 }
+fun View.snack(message: String, duration: Int = Snackbar.LENGTH_LONG) {
+    Snackbar.make(this, message, duration).show()
+}
