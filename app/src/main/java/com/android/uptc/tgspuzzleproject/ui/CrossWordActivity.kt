@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.annotation.RawRes
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
+import com.android.uptc.tgspuzzleproject.logic.GlobalValues
 import kotlinx.android.synthetic.main.activity_cross_word.*
 import org.akop.ararat.core.Crossword
 import org.akop.ararat.core.buildCrossword
@@ -18,6 +19,9 @@ class CrossWordActivity : AppCompatActivity(),
     CrosswordView.OnLongPressListener,
     CrosswordView.OnStateChangeListener,
     CrosswordView.OnSelectionChangeListener  {
+
+    private var puzzleNumber = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cross_word)
@@ -104,13 +108,27 @@ class CrossWordActivity : AppCompatActivity(),
         )
     }
 
+    private fun getPuzzle(): Crossword {
+        if(GlobalValues.levelGame == EASY) {
+            when(puzzleNumber) {
+                1 -> return readPuzzle(R.raw.puz)
+                2 -> return readPuzzle(R.raw.puz)
+                3 -> return readPuzzle(R.raw.puz)
+                else -> return readPuzzle(R.raw.puz)
+            }
+        } else {
+            return readPuzzle(R.raw.puz)
+        }
+    }
+
     private fun initComponents() {
+        puzzleNumber = (0..5).random()
         Log.d("==SelectedCell", crossword.selectedCell.toString())
         Log.d("==SelectedWord", crossword.selectedWord.toString())
         Log.d("==Correct letter", crossword.selectedWord[crossword.selectedCell].toString())
         Log.d("==Is Solved", crossword.isSolved.toString())
         crossword.crossword = readPuzzle()
-        val crosswordSource = readPuzzle(R.raw.puz)
+        val crosswordSource = getPuzzle()
 
         crossword!!.let { cv ->
             cv.crossword = crosswordSource
@@ -206,5 +224,10 @@ class CrossWordActivity : AppCompatActivity(),
         z_button.setOnClickListener {
             setLetter(getString(R.string.z_label))
         }
+    }
+
+    companion object {
+        const val EASY = 0
+        const val HARD = 1
     }
 }
