@@ -46,6 +46,8 @@
     <string name="logout_item">Cerrar sesión</string>
 
     <!-- CROSSWORD -->
+    <string name="time">Tiempo:</string>
+
     <string name="a_label">A</string>
     <string name="b_label">B</string>
     <string name="c_label">C</string>

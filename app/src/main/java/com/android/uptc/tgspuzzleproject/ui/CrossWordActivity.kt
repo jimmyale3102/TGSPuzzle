@@ -77,6 +77,7 @@ class CrossWordActivity : AppCompatActivity(),
         alertDialog.window?.attributes = layoutParams
         dialogView.easy_button.visibility = View.GONE
         dialogView.hard_button.text = getString(R.string.ok_button)
+        dialogView.title.text = getString(R.string.youve_solved_the_puzzle)
         dialogView.hard_button.setOnClickListener {
             alertDialog.dismiss()
             finish()
