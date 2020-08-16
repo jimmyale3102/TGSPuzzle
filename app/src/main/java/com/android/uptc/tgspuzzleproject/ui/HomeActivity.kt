@@ -131,10 +131,12 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             alertDialog.show()
             dialogView.easy_button.setOnClickListener {
                 GlobalValues.levelGame = EASY
+                startActivity(Intent(this, SearchWordActivity::class.java))
                 alertDialog.dismiss()
             }
             dialogView.hard_button.setOnClickListener {
                 GlobalValues.levelGame = HARD
+                startActivity(Intent(this, SearchWordActivity::class.java))
                 alertDialog.dismiss()
             }
         }
