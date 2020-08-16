@@ -3,9 +3,12 @@ package com.android.uptc.tgspuzzleproject.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
+import android.view.View
+import androidx.core.view.forEach
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.android.uptc.tgspuzzleproject.logic.GlobalValues
+import com.google.android.material.textview.MaterialTextView
 import com.rjbasitali.wordsearch.Word
 import com.rjbasitali.wordsearch.WordSearchView
 import kotlinx.android.synthetic.main.activity_cross_word.*
@@ -15,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_search_word.timer
 class SearchWordActivity : AppCompatActivity() {
 
     private var randomDeck = 0
+    private var wordsList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +29,15 @@ class SearchWordActivity : AppCompatActivity() {
     private fun initComponents() {
         search_word.setOnWordSearchedListener(WordSearchView.OnWordSearchedListener { word ->
             search_word_layout.snack("$word encontrada!")
+            if(wordsList.isNotEmpty()) {
+                for(i in 0 until words_content.childCount) {
+                    val textView = words_content.getChildAt(i) as MaterialTextView
+                    if(textView.text.toString() == word) {
+                        textView.visibility = View.GONE
+                        wordsList.remove(word)
+                    }
+                }
+            }
         })
         search_word.setBackgroundColor(getColor(R.color.primaryLightColor))
         randomDeck = (0..4).random()
@@ -56,6 +69,10 @@ class SearchWordActivity : AppCompatActivity() {
             Word("PARAMETRO", false, 3, 0, 3, 8),
             Word("MODELO", false, 5, 0, 5, 5)
         )
+        addWord("ELEMENTO")
+        addWord("PROCESO")
+        addWord("PARAMETRO")
+        addWord("MODELO")
         return arrayOf(
             "ISELEMENTO".toCharArray(),
             "CNJKFOOOIJ".toCharArray(),
@@ -78,6 +95,11 @@ class SearchWordActivity : AppCompatActivity() {
             Word("VARIABLE", false, 2, 4, 9, 4),
             Word("SERVICIO", false, 0, 9, 7, 9)
         )
+        addWord("RANGO")
+        addWord("RELACION")
+        addWord("VARIEDAD")
+        addWord("VARIABLE")
+        addWord("SERVICIO")
         return arrayOf(
             "AAKJHCSDOSFS".toCharArray(),
             "AUEJRPJGYEHW".toCharArray(),
@@ -102,6 +124,11 @@ class SearchWordActivity : AppCompatActivity() {
             Word("ENERGIA", false, 3, 4, 9, 4),
             Word("ATRIBUTO", false, 0, 7, 7, 7)
         )
+        addWord("ARMONIA")
+        addWord("CONTEXTO")
+        addWord("CIBERNETICA")
+        addWord("ENERGIA")
+        addWord("ATRIBUTO")
         return arrayOf(
             "SARMONIASNSD".toCharArray(),
             "AIOACONTEXTO".toCharArray(),
@@ -179,6 +206,12 @@ class SearchWordActivity : AppCompatActivity() {
             "AGCSOMEHIJ".toCharArray(),
             "ABCDEFGHIJ".toCharArray()
         )
+    }
+
+    private fun addWord(word: String) {
+        val textView = MaterialTextView(this)
+        textView.text = word
+        wordsList.add(word)
     }
 
     companion object {
