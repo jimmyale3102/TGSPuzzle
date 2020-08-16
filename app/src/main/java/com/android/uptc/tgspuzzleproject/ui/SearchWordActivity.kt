@@ -43,10 +43,10 @@ class SearchWordActivity : AppCompatActivity() {
 
     private fun getEasyDeckOne(): Array<CharArray> {
         search_word.setWords(
-            Word("ELEMENTO", false, 2, 0, 9, 0),
-            Word("PARAMETRO", false, 0, 3, 3,8),
+            Word("ELEMENTO", false, 0, 2, 0, 9),
+            Word("PARAMETRO", false, 3, 0, 3, 8),
             Word("MODELO", false, 0, 5, 5, 5),
-            Word("PROCESO", false, 2, 9, 3, 8)
+            Word("PROCESO", false, 9, 2, 3, 8)
         )
         return arrayOf(
             "ISELEMENTO".toCharArray(),

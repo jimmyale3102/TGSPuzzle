@@ -8,6 +8,43 @@
     android:layout_height="match_parent"
     tools:context=".ui.SearchWordActivity">
 
+    <RelativeLayout
+        android:id="@+id/timer_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        android:layout_alignParentEnd="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/exit_button"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/x_label"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/time_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_toStartOf="@id/timer"
+            android:layout_centerVertical="true"
+            android:textSize="22sp"
+            android:textColor="@color/primaryColor"
+            android:textStyle="bold"
+            android:text="@string/time"/>
+
+        <Chronometer
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/primaryColor"
+            android:textSize="22sp"/>
+
+    </RelativeLayout>
+
     <com.rjbasitali.wordsearch.WordSearchView
         android:id="@+id/search_word"
         android:layout_width="match_parent"
