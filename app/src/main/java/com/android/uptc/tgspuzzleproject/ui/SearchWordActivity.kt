@@ -20,18 +20,19 @@ class SearchWordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_word)
         initComponents()
-        search_word.setOnWordSearchedListener(WordSearchView.OnWordSearchedListener { word ->
-            search_word_layout.snack("$word encontrada!")
-        })
     }
 
     private fun initComponents() {
+        search_word.setOnWordSearchedListener(WordSearchView.OnWordSearchedListener { word ->
+            search_word_layout.snack("$word encontrada!")
+        })
+        search_word.setBackgroundColor(getColor(R.color.primaryLightColor))
         randomDeck = (0..4).random()
         search_word.setLetters(
             if(GlobalValues.levelGame == EASY) {
                 when(randomDeck) {
-                    1 -> getEasyDeckThree()
-                    2 -> getEasyDeckThree()
+                    1 -> getEasyDeckOne()
+                    2 -> getEasyDeckTwo()
                     else -> getEasyDeckThree()
                 }
             } else {
