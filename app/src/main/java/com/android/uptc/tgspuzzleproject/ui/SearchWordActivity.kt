@@ -2,12 +2,15 @@ package com.android.uptc.tgspuzzleproject.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.android.uptc.tgspuzzleproject.logic.GlobalValues
 import com.rjbasitali.wordsearch.Word
 import com.rjbasitali.wordsearch.WordSearchView
+import kotlinx.android.synthetic.main.activity_cross_word.*
 import kotlinx.android.synthetic.main.activity_search_word.*
+import kotlinx.android.synthetic.main.activity_search_word.timer
 
 class SearchWordActivity : AppCompatActivity() {
 
@@ -27,9 +30,9 @@ class SearchWordActivity : AppCompatActivity() {
         search_word.setLetters(
             if(GlobalValues.levelGame == EASY) {
                 when(randomDeck) {
-                    1 -> getEasyDeckOne()
-                    2 -> getEasyDeckOne()
-                    else -> getEasyDeckOne()
+                    1 -> getEasyDeckTwo()
+                    2 -> getEasyDeckTwo()
+                    else -> getEasyDeckTwo()
                 }
             } else {
                 when(randomDeck) {
@@ -39,24 +42,28 @@ class SearchWordActivity : AppCompatActivity() {
                 }
             }
         )
+
+        // Timer
+        timer.base = SystemClock.elapsedRealtime()
+        timer.start()
     }
 
     private fun getEasyDeckOne(): Array<CharArray> {
         search_word.setWords(
             Word("ELEMENTO", false, 0, 2, 0, 9),
+            Word("PROCESO", false, 1, 7, 7, 1),
             Word("PARAMETRO", false, 3, 0, 3, 8),
-            Word("MODELO", false, 0, 5, 5, 5),
-            Word("PROCESO", false, 9, 2, 3, 8)
+            Word("MODELO", false, 5, 0, 5, 5)
         )
         return arrayOf(
             "ISELEMENTO".toCharArray(),
-            "CNJKFOOWIJ".toCharArray(),
-            "POQWEDZUQQ".toCharArray(),
+            "CNJKFOOOIJ".toCharArray(),
+            "POQWEDSUQQ".toCharArray(),
             "PARAMETROU".toCharArray(),
-            "PALSHLESAN".toCharArray(),
-            "ÑLABCOEYEQ".toCharArray(),
-            "AALDJCPROY".toCharArray(),
-            "MNZAOQWERC".toCharArray(),
+            "PALSCLESAN".toCharArray(),
+            "ÑLAOCOEYEQ".toCharArray(),
+            "AARDJCPROY".toCharArray(),
+            "MPZAOQWERC".toCharArray(),
             "UJNRHBWSVQ".toCharArray(),
             "PLPUTAXSDD".toCharArray()
         )
@@ -64,22 +71,25 @@ class SearchWordActivity : AppCompatActivity() {
 
     private fun getEasyDeckTwo(): Array<CharArray> {
         search_word.setWords(
-            Word("WORD", false, 3, 3, 6, 6),
-            Word("SOME", false, 8, 3, 8, 6),
-            Word("SEARCHING", false, 0, 1, 8, 1),
-            Word("FOG", false, 3, 5, 5, 3)
+            Word("RANGO", false, 4, 4, 0, 8),
+            Word("RELACION", false, 4, 4, 4, 11),
+            Word("VARIEDAD", false, 9, 0, 9, 7),
+            Word("VARIABLE", false, 2, 4, 9, 4),
+            Word("SERVICIO", false, 0, 9, 7, 9)
         )
         return arrayOf(
-            "ASCDEFGHIJ".toCharArray(),
-            "AECDEFGHIJ".toCharArray(),
-            "AACDEFGHIJ".toCharArray(),
-            "ARCWEFGHIJ".toCharArray(),
-            "ACCDOFGHIJ".toCharArray(),
-            "AHCGERGHIJ".toCharArray(),
-            "AICDEFDHIJ".toCharArray(),
-            "ANCDEFGHIJ".toCharArray(),
-            "AGCSOMEHIJ".toCharArray(),
-            "ABCDEFGHIJ".toCharArray()
+            "AAKJHCSDOSFS".toCharArray(),
+            "AUEJRPJGYEHW".toCharArray(),
+            "PPAHVYNLARSD".toCharArray(),
+            "PQWEAAIUAVSG".toCharArray(),
+            "NMZXRELACION".toCharArray(),
+            "ASDQIEZXCCBN".toCharArray(),
+            "LKJDAGIUEITT".toCharArray(),
+            "POASBRIISOTQ".toCharArray(),
+            "BBSHLFWTATRA".toCharArray(),
+            "VARIEDADLKSA".toCharArray(),
+            "VARIEDADLKSA".toCharArray(),
+            "VARIEDADLKSA".toCharArray()
         )
     }
 
