@@ -123,6 +123,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
             dialogView.hard_button.setOnClickListener {
                 GlobalValues.levelGame = HARD
+                startActivity(Intent(this, CrossWordActivity::class.java))
                 alertDialog.dismiss()
             }
         }

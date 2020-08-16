@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">TGSPuzzleProject</string>
+    <string name="app_name">TGSPuzz</string>
+    <string name="ok_button">OK</string>
+    <string name="saving_score">Guardando puntuación</string>
+    <string name="score_saved">Puntuación guardada</string>
 
     <!-- Login -->
 
@@ -45,6 +48,8 @@
     <string name="logout_item">Cerrar sesión</string>
 
     <!-- CROSSWORD -->
+    <string name="time">Tiempo:</string>
+
     <string name="a_label">A</string>
     <string name="b_label">B</string>
     <string name="c_label">C</string>
@@ -72,6 +77,15 @@
     <string name="x_label">X</string>
     <string name="y_label">Y</string>
     <string name="z_label">Z</string>
+
+    <string name="solve_square">Resolver casilla</string>
+    <string name="solve_word">Resolver palabra</string>
+    <string name="solve_puzzle">Resolver puzzle</string>
+    <string name="restart">Reiniciar</string>
+    <string name="across">%1$d. Horizontal • %2$s</string>
+    <string name="down">%1$d. Vertical • %2$s</string>
+    <string name="title_by_author">%1$s by %2$s</string>
+    <string name="youve_solved_the_puzzle">Has resuelto el puzzle</string>
 
 
 </resources>
