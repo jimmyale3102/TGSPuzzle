@@ -211,6 +211,7 @@ class SearchWordActivity : AppCompatActivity() {
     private fun addWord(word: String) {
         val textView = MaterialTextView(this)
         textView.text = word
+        words_content.addView(textView)
         wordsList.add(word)
     }
 
