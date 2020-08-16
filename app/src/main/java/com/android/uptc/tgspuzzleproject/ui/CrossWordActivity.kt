@@ -147,7 +147,11 @@ class CrossWordActivity : AppCompatActivity(),
                 else -> R.raw.easy_puzzle_4
             }
         } else {
-            R.raw.puz
+            when(puzzleNumber) {
+                1 -> R.raw.hard_puzzle_1
+                2 -> R.raw.hard_puzzle_2
+                else -> R.raw.hard_puzzle_3
+            }
         }
     }
 
