@@ -47,8 +47,33 @@
 
     <com.rjbasitali.wordsearch.WordSearchView
         android:id="@+id/search_word"
+        android:layout_below="@id/timer_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"/>
+        android:layout_marginTop="@dimen/margin_medium"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/words_to_search"
+        android:layout_below="@id/search_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_centerHorizontal="true"
+        android:text="@string/words_to_search"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textColor="@color/primaryColor"/>
+
+    <LinearLayout
+        android:id="@+id/words_content"
+        android:layout_below="@id/words_to_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+    </LinearLayout>
 
 </RelativeLayout>
