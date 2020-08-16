@@ -67,7 +67,7 @@ class SearchWordActivity : AppCompatActivity() {
             Word("ELEMENTO", false, 0, 2, 0, 9),
             Word("PROCESO", false, 7, 1, 7, 7),
             Word("PARAMETRO", false, 3, 0, 3, 8),
-            Word("MODELO", false, 5, 0, 5, 5)
+            Word("MODELO", false, 0, 5, 5, 5)
         )
         addWord("ELEMENTO")
         addWord("PROCESO")
