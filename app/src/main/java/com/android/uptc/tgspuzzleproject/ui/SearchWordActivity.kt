@@ -30,9 +30,9 @@ class SearchWordActivity : AppCompatActivity() {
         search_word.setLetters(
             if(GlobalValues.levelGame == EASY) {
                 when(randomDeck) {
-                    1 -> getEasyDeckTwo()
-                    2 -> getEasyDeckTwo()
-                    else -> getEasyDeckTwo()
+                    1 -> getEasyDeckThree()
+                    2 -> getEasyDeckThree()
+                    else -> getEasyDeckThree()
                 }
             } else {
                 when(randomDeck) {
@@ -51,19 +51,19 @@ class SearchWordActivity : AppCompatActivity() {
     private fun getEasyDeckOne(): Array<CharArray> {
         search_word.setWords(
             Word("ELEMENTO", false, 0, 2, 0, 9),
-            Word("PROCESO", false, 1, 7, 7, 1),
+            Word("PROCESO", false, 7, 1, 7, 7),
             Word("PARAMETRO", false, 3, 0, 3, 8),
             Word("MODELO", false, 5, 0, 5, 5)
         )
         return arrayOf(
             "ISELEMENTO".toCharArray(),
             "CNJKFOOOIJ".toCharArray(),
-            "POQWEDSUQQ".toCharArray(),
+            "POQWEDZUQQ".toCharArray(),
             "PARAMETROU".toCharArray(),
-            "PALSCLESAN".toCharArray(),
+            "PALSCLEZAN".toCharArray(),
             "ÑLAOCOEYEQ".toCharArray(),
             "AARDJCPROY".toCharArray(),
-            "MPZAOQWERC".toCharArray(),
+            "MPROCESORC".toCharArray(),
             "UJNRHBWSVQ".toCharArray(),
             "PLPUTAXSDD".toCharArray()
         )
@@ -71,7 +71,7 @@ class SearchWordActivity : AppCompatActivity() {
 
     private fun getEasyDeckTwo(): Array<CharArray> {
         search_word.setWords(
-            Word("RANGO", false, 4, 4, 0, 8),
+            Word("RANGO", false, 6, 11, 2, 11),
             Word("RELACION", false, 4, 4, 4, 11),
             Word("VARIEDAD", false, 9, 0, 9, 7),
             Word("VARIABLE", false, 2, 4, 9, 4),
@@ -80,37 +80,40 @@ class SearchWordActivity : AppCompatActivity() {
         return arrayOf(
             "AAKJHCSDOSFS".toCharArray(),
             "AUEJRPJGYEHW".toCharArray(),
-            "PPAHVYNLARSD".toCharArray(),
+            "PPAHVYNLARSO".toCharArray(),
             "PQWEAAIUAVSG".toCharArray(),
             "NMZXRELACION".toCharArray(),
-            "ASDQIEZXCCBN".toCharArray(),
-            "LKJDAGIUEITT".toCharArray(),
+            "ASDQIEZXCCBA".toCharArray(),
+            "LKJDAGIUEITR".toCharArray(),
             "POASBRIISOTQ".toCharArray(),
             "BBSHLFWTATRA".toCharArray(),
             "VARIEDADLKSA".toCharArray(),
-            "VARIEDADLKSA".toCharArray(),
-            "VARIEDADLKSA".toCharArray()
+            "LAHEYXNNAPRO".toCharArray(),
+            "ASKRANGDOAUS".toCharArray()
         )
     }
 
     private fun getEasyDeckThree(): Array<CharArray> {
         search_word.setWords(
-            Word("WORD", false, 3, 3, 6, 6),
-            Word("SOME", false, 8, 3, 8, 6),
-            Word("SEARCHING", false, 0, 1, 8, 1),
-            Word("FOG", false, 3, 5, 5, 3)
+            Word("ARMONIA", false, 0, 1, 0, 7),
+            Word("CONTEXTO", false, 1, 4, 1, 11),
+            Word("CIBERNETICA", false, 6, 0, 6, 10),
+            Word("ENERGIA", false, 3, 4, 9, 4),
+            Word("ATRIBUTO", false, 0, 7, 7, 7)
         )
         return arrayOf(
-            "ASCDEFGHIJ".toCharArray(),
-            "AECDEFGHIJ".toCharArray(),
-            "AACDEFGHIJ".toCharArray(),
-            "ARCWEFGHIJ".toCharArray(),
-            "ACCDOFGHIJ".toCharArray(),
-            "AHCGERGHIJ".toCharArray(),
-            "AICDEFDHIJ".toCharArray(),
-            "ANCDEFGHIJ".toCharArray(),
-            "AGCSOMEHIJ".toCharArray(),
-            "ABCDEFGHIJ".toCharArray()
+            "SARMONIASNSD".toCharArray(),
+            "AIOACONTEXTO".toCharArray(),
+            "PALSKUHREDCA".toCharArray(),
+            "ZXGHEEAIPESS".toCharArray(),
+            "PWOENRUBYAQC".toCharArray(),
+            "MMANEKGUTSSV".toCharArray(),
+            "CIBERNETICAH".toCharArray(),
+            "APORGQTOBXCY".toCharArray(),
+            "AOWUINXCBHAR".toCharArray(),
+            "MKISAHAGEEQQ".toCharArray(),
+            "CDEMKOSADAWQ".toCharArray(),
+            "ATRIBUTDOAAO".toCharArray()
         )
     }
 
