@@ -93,6 +93,29 @@ class CrossWordActivity : AppCompatActivity(),
             finish()
         }
         alertDialog.show()
+
+        databaseInstance.collection("players").document(GlobalValues.playerId).get()
+            .addOnSuccessListener { player ->
+                dialogView.loading.visibility = View.GONE
+                dialogView.hard_button.visibility = View.VISIBLE
+                dialogView.description.text = getString(R.string.score_saved)
+                if(GlobalValues.levelGame == EASY
+                    && player.data.orEmpty().containsKey("crosswordEasyScore")) {
+                    val oldScore = player.data.orEmpty().getValue("crosswordEasyScore").toString()
+                        .toInt()
+                    if(score > oldScore) {
+                        saveScore(dialogView)
+                    }
+                }
+                if(GlobalValues.levelGame == HARD
+                    && player.data.orEmpty().containsKey("crosswordHardScore")) {
+                    val oldScore = player.data.orEmpty().getValue("crosswordHardScore").toString()
+                        .toInt()
+                    if(score > oldScore) {
+                        saveScore(dialogView)
+                    }
+                }
+            }
         saveScore(dialogView)
 
         cross_word_layout.snack(R.string.youve_solved_the_puzzle)
@@ -115,11 +138,17 @@ class CrossWordActivity : AppCompatActivity(),
     }
 
     private fun saveScore(dialogView: View) {
-        val easyScore = hashMapOf(
-            "crosswordEasyScore" to score
-        )
+        val scoreData = if(GlobalValues.levelGame == EASY) {
+            hashMapOf(
+                "crosswordEasyScore" to score
+            )
+        } else {
+            hashMapOf(
+                "crosswordHardScore" to score
+            )
+        }
         databaseInstance.collection("players").document(GlobalValues.playerId)
-            .set(easyScore, SetOptions.merge())
+            .set(scoreData, SetOptions.merge())
             .addOnSuccessListener {
                 dialogView.loading.visibility = View.GONE
                 dialogView.hard_button.visibility = View.VISIBLE
