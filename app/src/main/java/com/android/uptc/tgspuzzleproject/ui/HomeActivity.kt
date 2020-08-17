@@ -72,15 +72,21 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         // Set navigation view navigation item selected listener
         accompanists_navigation.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.crossword_score_item -> {
-                    GlobalValues.scoreType
+                R.id.crossword_easy_score_item -> {
+                    GlobalValues.scoreType = EASY_CROSSWORD
                     //showFirstAidFilter()
                 }
-                R.id.search_word_item -> {
+                R.id.crossword_hard_score_item -> {
+                    GlobalValues.scoreType = HARD_CROSSWORD
+                    //showFirstAidFilter()
+                }
+                R.id.search_word_easy_score_item -> {
+                    GlobalValues.scoreType = EASY_SEARCH_WORD
                     //showAgeFilter()
                 }
-                R.id.about_item -> {
-                    //showGenderFilter()
+                R.id.search_word_hard_score_item -> {
+                    GlobalValues.scoreType = HARD_SEARCH_WORD
+                    //showAgeFilter()
                 }
                 R.id.logout_item -> logout()
             }
@@ -144,8 +150,10 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.crossword_score_item -> return true
-            R.id.search_word_item -> return true
+            R.id.crossword_easy_score_item -> return true
+            R.id.crossword_hard_score_item -> return true
+            R.id.search_word_easy_score_item -> return true
+            R.id.search_word_hard_score_item -> return true
             R.id.about_item -> return true
             R.id.logout_item -> return true
         }
