@@ -27,6 +27,7 @@ class SearchWordActivity : AppCompatActivity() {
     }
 
     private fun initComponents() {
+
         search_word.setOnWordSearchedListener(WordSearchView.OnWordSearchedListener { word ->
             search_word_layout.snack("$word encontrada!")
             if(wordsList.isNotEmpty()) {
@@ -51,8 +52,8 @@ class SearchWordActivity : AppCompatActivity() {
             } else {
                 when(randomDeck) {
                     1 -> getHardDeckOne()
-                    2 -> getHardDeckTwo()
-                    else -> getHardDeckThree()
+                    2 -> getHardDeckOne()
+                    else -> getHardDeckOne()
                 }
             }
         )
@@ -147,22 +148,34 @@ class SearchWordActivity : AppCompatActivity() {
 
     private fun getHardDeckOne(): Array<CharArray> {
         search_word.setWords(
-            Word("WORD", false, 3, 3, 6, 6),
-            Word("SOME", false, 8, 3, 8, 6),
-            Word("SEARCHING", false, 0, 1, 8, 1),
-            Word("FOG", false, 3, 5, 5, 3)
+            Word("SISTEMAABIERTO", false, 0, 0, 13, 0),
+            Word("RETROINPUT", false, 0, 2, 9, 2),
+            Word("MORFOGENESIS", false, 12, 1, 12, 12),
+            Word("SENTROPIA", false, 1, 1, 1, 9),
+            Word("MORFOSTASIS", false, 2, 12, 12, 12),
+            Word("ESTABILIDAD", false, 1, 11, 11, 1)
         )
+        addWord("SISTEMAABIERTO")
+        addWord("RETROINPUT")
+        addWord("MORFOGENESIS")
+        addWord("SENTROPIA")
+        addWord("MORFOSTASIS")
+        addWord("ESTABILIDAD")
         return arrayOf(
-            "ASCDEFGHIJ".toCharArray(),
-            "AECDEFGHIJ".toCharArray(),
-            "AACDEFGHIJ".toCharArray(),
-            "ARCWEFGHIJ".toCharArray(),
-            "ACCDOFGHIJ".toCharArray(),
-            "AHCGERGHIJ".toCharArray(),
-            "AICDEFDHIJ".toCharArray(),
-            "ANCDEFGHIJ".toCharArray(),
-            "AGCSOMEHIJ".toCharArray(),
-            "ABCDEFGHIJ".toCharArray()
+            "STROALIMENTACI".toCharArray(),
+            "ISENTROPIAQEEE".toCharArray(),
+            "SDTHFGQWEYSSMS".toCharArray(),
+            "TERYADLAMTTDOE".toCharArray(),
+            "ETORASMOAAISRQ".toCharArray(),
+            "MAIESTABBLIDFD".toCharArray(),
+            "ASNESTIIILIDOB".toCharArray(),
+            "AEPSTLLPYESMSN".toCharArray(),
+            "BOUSIIOJHDTQTW".toCharArray(),
+            "ITTDDRIMENTAAI".toCharArray(),
+            "EJAATJAHSYQISE".toCharArray(),
+            "RDDENFGQWEYAIM".toCharArray(),
+            "TMORFOGENESISG".toCharArray(),
+            "OOALIMENTACION".toCharArray()
         )
     }
 
