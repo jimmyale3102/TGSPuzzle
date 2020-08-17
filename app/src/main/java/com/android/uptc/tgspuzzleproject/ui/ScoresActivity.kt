@@ -69,7 +69,7 @@ class ScoresActivity : AppCompatActivity() {
                 }
             }
             .addOnCompleteListener {
-                val scoresSorted = scoresList.sortWith( compareBy { it.score } ) as ArrayList<Player>
+                val scoresSorted = scoresList.sortedWith( compareBy { it.score } )
                 scores_recycler.adapter = ScoresAdapter(this,
                      scoresSorted
                 )

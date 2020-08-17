@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_scores.view.*
 
 class ScoresAdapter(
     private val context: Context,
-    private val scores: ArrayList<Player>): RecyclerView.Adapter<ViewHolder>() {
+    private val scores: List<Player>): RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context)

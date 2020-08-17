@@ -109,7 +109,6 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val builder = AlertDialog.Builder(this).setView(dialogView)
         val alertDialog = builder.create()
 
-        alertDialog.setCancelable(false)
         // Set width alert
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
