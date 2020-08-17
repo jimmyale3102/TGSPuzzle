@@ -44,4 +44,8 @@ dependencies {
     implementation 'com.github.0xe1f:ararat:1.0.15'
     // Word search
     implementation 'com.rjbasitali:wordsearch:0.1'
+
+    //Groupie
+    implementation "com.xwray:groupie:2.5.1"
+    implementation "com.xwray:groupie-kotlin-android-extensions:2.5.1"
 }
