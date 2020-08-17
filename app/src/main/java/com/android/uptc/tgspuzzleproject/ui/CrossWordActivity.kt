@@ -116,7 +116,6 @@ class CrossWordActivity : AppCompatActivity(),
                     }
                 }
             }
-        saveScore(dialogView)
 
         cross_word_layout.snack(R.string.youve_solved_the_puzzle)
     }

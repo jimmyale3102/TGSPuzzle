@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.alert_level_game.view.*
 import kotlinx.android.synthetic.main.home_menu_header.view.*
@@ -53,15 +54,13 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
             override fun onDrawerOpened(drawerView: View) {
                 super.onDrawerOpened(drawerView)
-
                 //toast("Drawer opened")
             }
 
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
                 super.onDrawerSlide(drawerView, slideOffset)
 
-                drawerView.username.text = "User"
-                drawerView.user_score.text = "0 pts"
+                drawerView.username.text = GlobalValues.username
 
             }
         }
@@ -131,10 +130,12 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             alertDialog.show()
             dialogView.easy_button.setOnClickListener {
                 GlobalValues.levelGame = EASY
+                startActivity(Intent(this, SearchWordActivity::class.java))
                 alertDialog.dismiss()
             }
             dialogView.hard_button.setOnClickListener {
                 GlobalValues.levelGame = HARD
+                startActivity(Intent(this, SearchWordActivity::class.java))
                 alertDialog.dismiss()
             }
         }

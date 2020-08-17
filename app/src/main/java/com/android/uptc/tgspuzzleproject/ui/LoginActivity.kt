@@ -90,6 +90,7 @@ class LoginActivity : AppCompatActivity() {
                     val userData = hashMapOf(
                         "username" to account.displayName!!
                     )
+                    GlobalValues.username = account.displayName!!
                     databaseInstance.collection("players").document(auth.uid!!)
                         .set(userData, SetOptions.merge())
                         .addOnSuccessListener { signIn() }
