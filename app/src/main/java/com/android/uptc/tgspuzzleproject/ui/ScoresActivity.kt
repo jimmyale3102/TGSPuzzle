@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.logic.GlobalValues
 import com.android.uptc.tgspuzzleproject.logic.Player
+import com.android.uptc.tgspuzzleproject.logic.ScoresAdapter
 import com.google.firebase.firestore.FirebaseFirestore
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_scores.*
 
 class ScoresActivity : AppCompatActivity() {
@@ -15,12 +18,15 @@ class ScoresActivity : AppCompatActivity() {
     private val loadingView by lazy { findViewById<View>(R.id.loading_scores) }
     private val databaseInstance by lazy { FirebaseFirestore.getInstance() }
     private var scoresList = ArrayList<Player>()
+    private val adapter = GroupAdapter<ViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scores)
         val linearManager = LinearLayoutManager(this)
+        adapter.clear()
         scores_recycler.layoutManager = linearManager
+        scores_recycler.adapter = adapter
         getData()
     }
 
@@ -63,7 +69,10 @@ class ScoresActivity : AppCompatActivity() {
                 }
             }
             .addOnCompleteListener {
-                scoresList.sortWith( compareBy { it.score } )
+                val scoresSorted = scoresList.sortWith( compareBy { it.score } ) as ArrayList<Player>
+                scores_recycler.adapter = ScoresAdapter(this,
+                     scoresSorted
+                )
                 loadingView.visibility = View.GONE
                 scores_recycler.visibility = View.VISIBLE
             }

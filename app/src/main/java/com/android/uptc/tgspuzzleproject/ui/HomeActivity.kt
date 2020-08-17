@@ -74,19 +74,19 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             when (it.itemId) {
                 R.id.crossword_easy_score_item -> {
                     GlobalValues.scoreType = EASY_CROSSWORD
-                    //showFirstAidFilter()
+                    startActivity(Intent(this, ScoresActivity::class.java))
                 }
                 R.id.crossword_hard_score_item -> {
                     GlobalValues.scoreType = HARD_CROSSWORD
-                    //showFirstAidFilter()
+                    startActivity(Intent(this, ScoresActivity::class.java))
                 }
                 R.id.search_word_easy_score_item -> {
                     GlobalValues.scoreType = EASY_SEARCH_WORD
-                    //showAgeFilter()
+                    startActivity(Intent(this, ScoresActivity::class.java))
                 }
                 R.id.search_word_hard_score_item -> {
                     GlobalValues.scoreType = HARD_SEARCH_WORD
-                    //showAgeFilter()
+                    startActivity(Intent(this, ScoresActivity::class.java))
                 }
                 R.id.logout_item -> logout()
             }
