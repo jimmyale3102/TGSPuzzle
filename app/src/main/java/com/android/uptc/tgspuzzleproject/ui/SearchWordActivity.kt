@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.forEach
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.android.uptc.tgspuzzleproject.logic.GlobalValues
@@ -17,7 +16,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.rjbasitali.wordsearch.Word
 import com.rjbasitali.wordsearch.WordSearchView
-import kotlinx.android.synthetic.main.activity_cross_word.*
 import kotlinx.android.synthetic.main.activity_search_word.*
 import kotlinx.android.synthetic.main.activity_search_word.timer
 import kotlinx.android.synthetic.main.alert_level_game.view.*
@@ -89,7 +87,7 @@ class SearchWordActivity : AppCompatActivity() {
                 }
             }
 
-        cross_word_layout.snack(R.string.youve_solved_the_puzzle)
+        search_word_layout.snack(R.string.youve_solved_search_word)
     }
 
     private fun saveScore(dialogView: View) {
@@ -112,6 +110,7 @@ class SearchWordActivity : AppCompatActivity() {
     }
 
     private fun initComponents() {
+
         search_word.setOnWordSearchedListener(WordSearchView.OnWordSearchedListener { word ->
             search_word_layout.snack("$word encontrada!")
             if(wordsList.isNotEmpty()) {
@@ -149,6 +148,9 @@ class SearchWordActivity : AppCompatActivity() {
         // Timer
         timer.base = SystemClock.elapsedRealtime()
         timer.start()
+        exit_button.setOnClickListener {
+            finish()
+        }
     }
 
     private fun getEasyDeckOne(): Array<CharArray> {

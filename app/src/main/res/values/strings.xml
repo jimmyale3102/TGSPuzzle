@@ -89,5 +89,6 @@
 
     <!-- SEARCH WORD -->
     <string name="words_to_search">Palabras</string>
+    <string name="youve_solved_search_word">Has resuelto la sopa de letras</string>
 
 </resources>
