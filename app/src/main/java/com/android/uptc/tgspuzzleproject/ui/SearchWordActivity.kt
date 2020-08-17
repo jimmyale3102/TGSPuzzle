@@ -3,21 +3,30 @@ package com.android.uptc.tgspuzzleproject.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.DisplayMetrics
+import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.forEach
 import com.android.uptc.tgspuzzleproject.R
 import com.android.uptc.tgspuzzleproject.extensions.snack
 import com.android.uptc.tgspuzzleproject.logic.GlobalValues
 import com.google.android.material.textview.MaterialTextView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.rjbasitali.wordsearch.Word
 import com.rjbasitali.wordsearch.WordSearchView
 import kotlinx.android.synthetic.main.activity_cross_word.*
 import kotlinx.android.synthetic.main.activity_search_word.*
 import kotlinx.android.synthetic.main.activity_search_word.timer
+import kotlinx.android.synthetic.main.alert_level_game.view.*
 
 class SearchWordActivity : AppCompatActivity() {
 
+    private val databaseInstance by lazy { FirebaseFirestore.getInstance() }
     private var randomDeck = 0
+    private var score = 0
     private var wordsList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +35,83 @@ class SearchWordActivity : AppCompatActivity() {
         initComponents()
     }
 
-    private fun initComponents() {
+    private fun showWinMessage() {
+        val minutes = timer.text.toString().split(":")[0]
+        val seconds = timer.text.toString().split(":")[1]
+        score = (minutes + seconds).toInt()
 
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.alert_level_game, null)
+        val builder = AlertDialog.Builder(this).setView(dialogView)
+        val alertDialog = builder.create()
+
+        alertDialog.setCancelable(false)
+        // Set width alert
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val displayWidth: Int = displayMetrics.widthPixels
+        val layoutParams: WindowManager.LayoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(alertDialog.window?.attributes)
+        val dialogWindowWidth = (displayWidth * 0.8f).toInt()
+        layoutParams.width = dialogWindowWidth
+        alertDialog.window?.attributes = layoutParams
+        dialogView.easy_button.visibility = View.GONE
+        dialogView.hard_button.text = getString(R.string.ok_button)
+        dialogView.title.text = getString(R.string.youve_solved_the_puzzle)
+        dialogView.loading.visibility = View.VISIBLE
+        dialogView.description.text = getString(R.string.saving_score)
+        dialogView.hard_button.visibility = View.GONE
+        dialogView.hard_button.setOnClickListener {
+            alertDialog.dismiss()
+            finish()
+        }
+        alertDialog.show()
+
+        databaseInstance.collection("players").document(GlobalValues.playerId).get()
+            .addOnSuccessListener { player ->
+                dialogView.loading.visibility = View.GONE
+                dialogView.hard_button.visibility = View.VISIBLE
+                dialogView.description.text = getString(R.string.score_saved)
+                if(GlobalValues.levelGame == CrossWordActivity.EASY
+                    && player.data.orEmpty().containsKey("searchWordEasyScore")) {
+                    val oldScore = player.data.orEmpty().getValue("searchWordEasyScore").toString()
+                        .toInt()
+                    if(score > oldScore) {
+                        saveScore(dialogView)
+                    }
+                }
+                if(GlobalValues.levelGame == CrossWordActivity.HARD
+                    && player.data.orEmpty().containsKey("searchWordHardScore")) {
+                    val oldScore = player.data.orEmpty().getValue("searchWordHardScore").toString()
+                        .toInt()
+                    if(score > oldScore) {
+                        saveScore(dialogView)
+                    }
+                }
+            }
+
+        cross_word_layout.snack(R.string.youve_solved_the_puzzle)
+    }
+
+    private fun saveScore(dialogView: View) {
+        val scoreData = if(GlobalValues.levelGame == CrossWordActivity.EASY) {
+            hashMapOf(
+                "searchWordEasyScore" to score
+            )
+        } else {
+            hashMapOf(
+                "searchWordHardScore" to score
+            )
+        }
+        databaseInstance.collection("players").document(GlobalValues.playerId)
+            .set(scoreData, SetOptions.merge())
+            .addOnSuccessListener {
+                dialogView.loading.visibility = View.GONE
+                dialogView.hard_button.visibility = View.VISIBLE
+                dialogView.description.text = getString(R.string.score_saved)
+            }
+    }
+
+    private fun initComponents() {
         search_word.setOnWordSearchedListener(WordSearchView.OnWordSearchedListener { word ->
             search_word_layout.snack("$word encontrada!")
             if(wordsList.isNotEmpty()) {
@@ -36,6 +120,10 @@ class SearchWordActivity : AppCompatActivity() {
                     if(textView.text.toString() == word) {
                         textView.visibility = View.GONE
                         wordsList.remove(word)
+                        // Player Won
+                        if(wordsList.isEmpty()) {
+                            showWinMessage()
+                        }
                     }
                 }
             }
