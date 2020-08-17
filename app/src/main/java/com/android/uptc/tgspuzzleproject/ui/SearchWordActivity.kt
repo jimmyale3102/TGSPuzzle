@@ -51,9 +51,9 @@ class SearchWordActivity : AppCompatActivity() {
                 }
             } else {
                 when(randomDeck) {
-                    1 -> getHardDeckOne()
-                    2 -> getHardDeckOne()
-                    else -> getHardDeckOne()
+                    1 -> getHardDeckTwo()
+                    2 -> getHardDeckTwo()
+                    else -> getHardDeckTwo()
                 }
             }
         )
@@ -181,22 +181,32 @@ class SearchWordActivity : AppCompatActivity() {
 
     private fun getHardDeckTwo(): Array<CharArray> {
         search_word.setWords(
-            Word("WORD", false, 3, 3, 6, 6),
-            Word("SOME", false, 8, 3, 8, 6),
-            Word("SEARCHING", false, 0, 1, 8, 1),
-            Word("FOG", false, 3, 5, 5, 3)
+            Word("ORGANIZACION", false, 1, 0, 1, 11),
+            Word("PROCESO", false, 4, 1, 4, 7),
+            Word("SUBSISTEMA", false, 7, 1, 7, 10),
+            Word("ENTROPIA", false, 0, 3, 7, 10),
+            Word("OPERADORES", false, 10, 2, 10, 11),
+            Word("VARIABLE", false, 3, 10, 10, 10)
         )
+        addWord("ORGANIZACION")
+        addWord("PROCESO")
+        addWord("SUBSISTEMA")
+        addWord("ENTROPIA")
+        addWord("VARIABLE")
+        addWord("OPERADORES")
         return arrayOf(
-            "ASCDEFGHIJ".toCharArray(),
-            "AECDEFGHIJ".toCharArray(),
-            "AACDEFGHIJ".toCharArray(),
-            "ARCWEFGHIJ".toCharArray(),
-            "ACCDOFGHIJ".toCharArray(),
-            "AHCGERGHIJ".toCharArray(),
-            "AICDEFDHIJ".toCharArray(),
-            "ANCDEFGHIJ".toCharArray(),
-            "AGCSOMEHIJ".toCharArray(),
-            "ABCDEFGHIJ".toCharArray()
+            "ASCEEFGPROAS".toCharArray(),
+            "ORGANIZACION".toCharArray(),
+            "AACDETGHIJDF".toCharArray(),
+            "DRCWEFRSISVO".toCharArray(),
+            "CPROCESOIJAE".toCharArray(),
+            "HHCGERGHPJRE".toCharArray(),
+            "JICDEFDHIIIF".toCharArray(),
+            "QSUBSISTEMAJ".toCharArray(),
+            "OGCSOMEOPEBS".toCharArray(),
+            "PNCDEFGHIJLJ".toCharArray(),
+            "RGOPERADORES".toCharArray(),
+            "ABCDEFGDESER".toCharArray()
         )
     }
 
