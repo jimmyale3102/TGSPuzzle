@@ -51,8 +51,8 @@ class SearchWordActivity : AppCompatActivity() {
                 }
             } else {
                 when(randomDeck) {
-                    1 -> getHardDeckThree()
-                    2 -> getHardDeckThree()
+                    1 -> getHardDeckOne()
+                    2 -> getHardDeckTwo()
                     else -> getHardDeckThree()
                 }
             }
