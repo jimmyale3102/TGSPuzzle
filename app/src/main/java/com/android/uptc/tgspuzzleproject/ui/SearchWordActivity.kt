@@ -73,14 +73,14 @@ class SearchWordActivity : AppCompatActivity() {
                     && player.data.orEmpty().containsKey("searchWordEasyScore")) {
                     val oldScore = player.data.orEmpty().getValue("searchWordEasyScore").toString()
                         .toInt()
-                    if(score > oldScore) {
+                    if(score < oldScore) {
                         saveScore(dialogView)
                     }
                 } else if(GlobalValues.levelGame == CrossWordActivity.HARD
                     && player.data.orEmpty().containsKey("searchWordHardScore")) {
                     val oldScore = player.data.orEmpty().getValue("searchWordHardScore").toString()
                         .toInt()
-                    if(score > oldScore) {
+                    if(score < oldScore) {
                         saveScore(dialogView)
                     }
                 } else { saveScore(dialogView) }

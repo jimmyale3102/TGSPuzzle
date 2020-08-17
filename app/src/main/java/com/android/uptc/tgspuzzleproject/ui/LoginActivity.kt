@@ -91,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                         "username" to account.displayName!!
                     )
                     GlobalValues.username = account.displayName!!
+                    GlobalValues.playerId = auth.uid!!
                     databaseInstance.collection("players").document(auth.uid!!)
                         .set(userData, SetOptions.merge())
                         .addOnSuccessListener { signIn() }
