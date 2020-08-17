@@ -76,15 +76,14 @@ class SearchWordActivity : AppCompatActivity() {
                     if(score > oldScore) {
                         saveScore(dialogView)
                     }
-                }
-                if(GlobalValues.levelGame == CrossWordActivity.HARD
+                } else if(GlobalValues.levelGame == CrossWordActivity.HARD
                     && player.data.orEmpty().containsKey("searchWordHardScore")) {
                     val oldScore = player.data.orEmpty().getValue("searchWordHardScore").toString()
                         .toInt()
                     if(score > oldScore) {
                         saveScore(dialogView)
                     }
-                }
+                } else { saveScore(dialogView) }
             }
 
         search_word_layout.snack(R.string.youve_solved_search_word)
