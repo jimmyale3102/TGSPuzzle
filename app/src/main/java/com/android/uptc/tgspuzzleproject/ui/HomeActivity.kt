@@ -73,6 +73,7 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         accompanists_navigation.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.crossword_score_item -> {
+                    GlobalValues.scoreType
                     //showFirstAidFilter()
                 }
                 R.id.search_word_item -> {
@@ -154,5 +155,9 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     companion object {
         const val EASY = 0
         const val HARD = 1
+        const val EASY_CROSSWORD = 1
+        const val HARD_CROSSWORD = 2
+        const val EASY_SEARCH_WORD = 3
+        const val HARD_SEARCH_WORD = 4
     }
 }
