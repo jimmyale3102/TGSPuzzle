@@ -6,8 +6,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Player(
     val username: String,
-    val score: String): Parcelable {
+    val score: Int): Parcelable {
     constructor(): this(
         username = "",
-        score = "")
+        score = 0)
 }
