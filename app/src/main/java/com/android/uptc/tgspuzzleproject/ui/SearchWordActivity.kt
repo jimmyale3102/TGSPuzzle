@@ -51,9 +51,9 @@ class SearchWordActivity : AppCompatActivity() {
                 }
             } else {
                 when(randomDeck) {
-                    1 -> getHardDeckTwo()
-                    2 -> getHardDeckTwo()
-                    else -> getHardDeckTwo()
+                    1 -> getHardDeckThree()
+                    2 -> getHardDeckThree()
+                    else -> getHardDeckThree()
                 }
             }
         )
@@ -212,22 +212,31 @@ class SearchWordActivity : AppCompatActivity() {
 
     private fun getHardDeckThree(): Array<CharArray> {
         search_word.setWords(
-            Word("WORD", false, 3, 3, 6, 6),
-            Word("SOME", false, 8, 3, 8, 6),
-            Word("SEARCHING", false, 0, 1, 8, 1),
-            Word("FOG", false, 3, 5, 5, 3)
+            Word("ADAPTABILIDAD", false, 1, 0, 1, 12),
+            Word("TELEOLOGIA", false, 5, 3, 5, 12),
+            Word("SIMBIOTICAS", false, 9, 1, 9, 11),
+            Word("AMBIENTE", false, 1, 0, 8, 7),
+            Word("SUPERFLUA", false, 2, 0, 10, 0)
         )
+        addWord("ADAPTABILIDAD")
+        addWord("TELEOLOGIA")
+        addWord("SIMBIOTICAS")
+        addWord("AMBIENTE")
+        addWord("SUPERFLUA")
         return arrayOf(
-            "ASCDEFGHIJ".toCharArray(),
-            "AECDEFGHIJ".toCharArray(),
-            "AACDEFGHIJ".toCharArray(),
-            "ARCWEFGHIJ".toCharArray(),
-            "ACCDOFGHIJ".toCharArray(),
-            "AHCGERGHIJ".toCharArray(),
-            "AICDEFDHIJ".toCharArray(),
-            "ANCDEFGHIJ".toCharArray(),
-            "AGCSOMEHIJ".toCharArray(),
-            "ABCDEFGHIJ".toCharArray()
+            "ISETROPIAQEEE".toCharArray(),
+            "ADAPTABILIDAD".toCharArray(),
+            "SMRYALAMTTDOE".toCharArray(),
+            "UTBRASOAAISRQ".toCharArray(),
+            "PAIISTABLIDFD".toCharArray(),
+            "ESNTELEOLOGIA".toCharArray(),
+            "REPSTNLPYSMSN".toCharArray(),
+            "FOUSIITJHDQTW".toCharArray(),
+            "LTTDDRIEENTAI".toCharArray(),
+            "USIMBIOTICASI".toCharArray(),
+            "ADDENFGQWEYAM".toCharArray(),
+            "TMORFOGENESIG".toCharArray(),
+            "OOALIMENTACIO".toCharArray()
         )
     }
 
