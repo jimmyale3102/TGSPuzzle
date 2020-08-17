@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">TGSPuzz</string>
+    <string name="powered_by">Powered by: Jimmy Alejandro</string>
     <string name="ok_button">OK</string>
     <string name="saving_score">Guardando puntuación</string>
     <string name="score_saved">Puntuación guardada</string>
