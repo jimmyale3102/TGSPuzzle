@@ -153,7 +153,6 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.crossword_hard_score_item -> return true
             R.id.search_word_easy_score_item -> return true
             R.id.search_word_hard_score_item -> return true
-            R.id.about_item -> return true
             R.id.logout_item -> return true
         }
         return false

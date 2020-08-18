@@ -19,14 +19,6 @@
 
     </group>
 
-    <group>
-
-        <item
-            android:id="@+id/about_item"
-            android:title="@string/about_item"/>
-
-    </group>
-
     <item
         android:id="@+id/logout_item"
         android:title="@string/logout_item"/>
