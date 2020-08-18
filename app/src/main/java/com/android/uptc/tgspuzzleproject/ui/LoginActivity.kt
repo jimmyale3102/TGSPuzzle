@@ -55,7 +55,15 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        signIn()
+                        val databaseInstance = FirebaseFirestore.getInstance()
+                        val userData = hashMapOf(
+                            "username" to username.text.toString()
+                        )
+                        GlobalValues.username = username.text.toString()
+                        GlobalValues.playerId = auth.uid!!
+                        databaseInstance.collection("players").document(auth.uid!!)
+                            .set(userData, SetOptions.merge())
+                            .addOnSuccessListener { signIn() }
                     } else {
                         // If sign in fails, display a message to the user.
                         when(task.exception) {
@@ -91,6 +99,7 @@ class LoginActivity : AppCompatActivity() {
                         "username" to account.displayName!!
                     )
                     GlobalValues.username = account.displayName!!
+                    GlobalValues.playerId = auth.uid!!
                     databaseInstance.collection("players").document(auth.uid!!)
                         .set(userData, SetOptions.merge())
                         .addOnSuccessListener { signIn() }

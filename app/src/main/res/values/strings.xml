@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">TGSPuzz</string>
+    <string name="powered_by">Powered by: Jimmy Alejandro</string>
     <string name="ok_button">OK</string>
     <string name="saving_score">Guardando puntuación</string>
     <string name="score_saved">Puntuación guardada</string>
@@ -42,8 +43,10 @@
     <string name="close_drawer">Cerrar</string>
     <string name="username_header">Usuario</string>
     <string name="score_header">Puntuación</string>
-    <string name="crossword_score_item">Puntajes de crucigrama</string>
-    <string name="search_word_score_item">Puntajes de sopa de letras</string>
+    <string name="crossword_easy_score_item">Puntajes crucigrama fácil</string>
+    <string name="crossword_hard_score_item">Puntajes crucigrama difícil</string>
+    <string name="search_word_easy_score_item">Puntajes sopa de letras fácil</string>
+    <string name="search_word_hard_score_item">Puntajes sopa de letras difícil</string>
     <string name="about_item">Acecrca de</string>
     <string name="logout_item">Cerrar sesión</string>
 
@@ -90,5 +93,8 @@
     <!-- SEARCH WORD -->
     <string name="words_to_search">Palabras</string>
     <string name="youve_solved_search_word">Has resuelto la sopa de letras</string>
+
+    <!-- SCORES -->
+    <string name="scores_title">Puntajes</string>
 
 </resources>

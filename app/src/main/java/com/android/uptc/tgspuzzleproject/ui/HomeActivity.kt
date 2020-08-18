@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.home_menu_header.view.*
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private val databaseInstance by lazy { FirebaseFirestore.getInstance() }
     private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
     private lateinit var googleSignInClient: GoogleSignInClient
 
@@ -59,8 +60,15 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
                 super.onDrawerSlide(drawerView, slideOffset)
-
-                drawerView.username.text = GlobalValues.username
+                if(GlobalValues.username.isNotEmpty()) {
+                    drawerView.username.text = GlobalValues.username
+                } else {
+                    databaseInstance.collection("players").document(auth.currentUser!!.uid).get()
+                        .addOnSuccessListener { player ->
+                            drawerView.username.text = player.data.orEmpty().getValue("username")
+                                .toString()
+                        }
+                }
 
             }
         }
@@ -72,14 +80,21 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         // Set navigation view navigation item selected listener
         accompanists_navigation.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.crossword_score_item -> {
-                    //showFirstAidFilter()
+                R.id.crossword_easy_score_item -> {
+                    GlobalValues.scoreType = EASY_CROSSWORD
+                    startActivity(Intent(this, ScoresActivity::class.java))
                 }
-                R.id.search_word_item -> {
-                    //showAgeFilter()
+                R.id.crossword_hard_score_item -> {
+                    GlobalValues.scoreType = HARD_CROSSWORD
+                    startActivity(Intent(this, ScoresActivity::class.java))
                 }
-                R.id.about_item -> {
-                    //showGenderFilter()
+                R.id.search_word_easy_score_item -> {
+                    GlobalValues.scoreType = EASY_SEARCH_WORD
+                    startActivity(Intent(this, ScoresActivity::class.java))
+                }
+                R.id.search_word_hard_score_item -> {
+                    GlobalValues.scoreType = HARD_SEARCH_WORD
+                    startActivity(Intent(this, ScoresActivity::class.java))
                 }
                 R.id.logout_item -> logout()
             }
@@ -102,7 +117,6 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val builder = AlertDialog.Builder(this).setView(dialogView)
         val alertDialog = builder.create()
 
-        alertDialog.setCancelable(false)
         // Set width alert
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -143,9 +157,10 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.crossword_score_item -> return true
-            R.id.search_word_item -> return true
-            R.id.about_item -> return true
+            R.id.crossword_easy_score_item -> return true
+            R.id.crossword_hard_score_item -> return true
+            R.id.search_word_easy_score_item -> return true
+            R.id.search_word_hard_score_item -> return true
             R.id.logout_item -> return true
         }
         return false
@@ -154,5 +169,9 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     companion object {
         const val EASY = 0
         const val HARD = 1
+        const val EASY_CROSSWORD = 1
+        const val HARD_CROSSWORD = 2
+        const val EASY_SEARCH_WORD = 3
+        const val HARD_SEARCH_WORD = 4
     }
 }

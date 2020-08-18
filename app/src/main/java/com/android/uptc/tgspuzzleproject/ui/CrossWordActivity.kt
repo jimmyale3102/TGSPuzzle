@@ -103,18 +103,17 @@ class CrossWordActivity : AppCompatActivity(),
                     && player.data.orEmpty().containsKey("crosswordEasyScore")) {
                     val oldScore = player.data.orEmpty().getValue("crosswordEasyScore").toString()
                         .toInt()
-                    if(score > oldScore) {
+                    if(score < oldScore) {
                         saveScore(dialogView)
                     }
-                }
-                if(GlobalValues.levelGame == HARD
+                } else if(GlobalValues.levelGame == HARD
                     && player.data.orEmpty().containsKey("crosswordHardScore")) {
                     val oldScore = player.data.orEmpty().getValue("crosswordHardScore").toString()
                         .toInt()
-                    if(score > oldScore) {
+                    if(score < oldScore) {
                         saveScore(dialogView)
                     }
-                }
+                } else { saveScore(dialogView) }
             }
 
         cross_word_layout.snack(R.string.youve_solved_the_puzzle)

@@ -69,29 +69,28 @@ class SearchWordActivity : AppCompatActivity() {
                 dialogView.loading.visibility = View.GONE
                 dialogView.hard_button.visibility = View.VISIBLE
                 dialogView.description.text = getString(R.string.score_saved)
-                if(GlobalValues.levelGame == CrossWordActivity.EASY
+                if(GlobalValues.levelGame == EASY
                     && player.data.orEmpty().containsKey("searchWordEasyScore")) {
                     val oldScore = player.data.orEmpty().getValue("searchWordEasyScore").toString()
                         .toInt()
-                    if(score > oldScore) {
+                    if(score < oldScore) {
                         saveScore(dialogView)
                     }
-                }
-                if(GlobalValues.levelGame == CrossWordActivity.HARD
+                } else if(GlobalValues.levelGame == CrossWordActivity.HARD
                     && player.data.orEmpty().containsKey("searchWordHardScore")) {
                     val oldScore = player.data.orEmpty().getValue("searchWordHardScore").toString()
                         .toInt()
-                    if(score > oldScore) {
+                    if(score < oldScore) {
                         saveScore(dialogView)
                     }
-                }
+                } else { saveScore(dialogView) }
             }
 
         search_word_layout.snack(R.string.youve_solved_search_word)
     }
 
     private fun saveScore(dialogView: View) {
-        val scoreData = if(GlobalValues.levelGame == CrossWordActivity.EASY) {
+        val scoreData = if(GlobalValues.levelGame == EASY) {
             hashMapOf(
                 "searchWordEasyScore" to score
             )
