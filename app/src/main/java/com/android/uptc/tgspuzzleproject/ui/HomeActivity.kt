@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.home_menu_header.view.*
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private val databaseInstance by lazy { FirebaseFirestore.getInstance() }
     private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
     private lateinit var googleSignInClient: GoogleSignInClient
 
@@ -59,8 +60,15 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
                 super.onDrawerSlide(drawerView, slideOffset)
-
-                drawerView.username.text = GlobalValues.username
+                if(GlobalValues.username.isNotEmpty()) {
+                    drawerView.username.text = GlobalValues.username
+                } else {
+                    databaseInstance.collection("players").document(auth.currentUser!!.uid).get()
+                        .addOnSuccessListener { player ->
+                            drawerView.username.text = player.data.orEmpty().getValue("username")
+                                .toString()
+                        }
+                }
 
             }
         }
